@@ -1,14 +1,15 @@
 body{
     background-color: lightgrey;
+    font-family: sans-serif;
 }
 
-#app {
+.app {
     width: 50%;
     margin: auto;
     text-align: center;
 }
 
-#eventbox {
+.eventbox {
     text-align: left;
     display: flex;
     padding: 50px;
@@ -17,10 +18,33 @@ body{
     background-clip: content-box;
 }
 
-#eventcontent {
+.eventcontent {
     padding-left: 20px;
+    width: 100%;
+    position: relative;
 }
 
-#eventphoto {
+.eventphoto {
     display: flex;
+}
+
+.viewbuttoncontainer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    text-align: right;
+}
+
+.eventviewbutton {
+    background-color: orange;
+    border: 2px solid orange;
+    border-radius: 2px;
+    padding: 10px 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.eventviewbutton:hover {
+    border: 2px solid black;
 }
