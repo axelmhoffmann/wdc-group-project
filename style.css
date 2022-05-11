@@ -1,3 +1,9 @@
+.password {
+    text-security: circle; /* IE/Safari */
+    -moz-text-security: circle; /* FireFox */
+    -webkit-text-security: circle; /* Chrome/Safari  */
+}
+
 body{
     background-color: lightgrey;
     font-family: Inter, sans-serif;
@@ -9,6 +15,43 @@ body{
     margin: auto;
     text-align: center;
     margin-top: 100px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.loginbox {
+    text-align: center;
+    display: flex;
+    width: 400px;
+    height: auto;
+    background-color: white;
+    background-clip: content-box;
+}
+
+.logincontent {
+    width: 100%;
+    position: relative;
+}
+
+.loginform {
+}
+
+.loginbutton {
+	background-color: lightgrey;
+	width: 97px;
+    padding: 8px 15px 6px 15px;
+    border: 2px solid #00000000;
+    border-radius: 100px;
+    margin: 6px;
+    margin-bottom: 30px;
+}
+
+.loginbutton:hover {
+    background-color: orange;
+    color: white;
 }
 
 .eventbox {
@@ -89,6 +132,7 @@ body{
     margin: 6px;
     padding: 8px 15px 6px 15px;
     border-radius: 50px;
+    border: 2px solid black;
     font-family: sans-serif, FontAwesome;
 }
 .logo {
