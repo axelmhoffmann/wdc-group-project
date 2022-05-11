@@ -1,6 +1,7 @@
 body{
     background-color: lightgrey;
-    font-family: sans-serif;
+    font-family: Inter, sans-serif;
+    margin: 0;
 }
 
 .app {
@@ -52,24 +53,45 @@ body{
 .bar {
     background-color: white;
     display: flex;
+    width: 100%;
+    padding: 8px;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    z-index: 2;
 }
 
 .bar-item {
     text-decoration: none;
     padding: 8px 15px 6px 15px;
-    color: grey;
-    float: center;
+    margin: 6px;
+    color: black;
+    float: right;
+    border-radius: 50px;
 }
 
 .bar-item:hover {
-    color: black;
+    color: white;
     background-color: orange;
 }
 
+.bar-important {
+    background-color: lightgreen;
+}
+.bar-important:hover {
+    background-color: orange;
+}
+
+.bar-search {
+    margin: 6px;
+    padding: 8px 15px 6px 15px;
+    border-radius: 50px;
+    font-family: sans-serif, FontAwesome;
+}
 .logo {
     text-decoration: none;
     padding-right: 10px;
+    margin-top: 2px;
     float: left;
-    width: 30px;
+    width: 40px;
 }
