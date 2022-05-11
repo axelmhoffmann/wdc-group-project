@@ -48,3 +48,28 @@ body{
 .eventviewbutton:hover {
     border: 2px solid black;
 }
+
+.bar {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.bar-item {
+    text-decoration: none;
+    padding: 8px 15px 6px 15px;
+    color: grey;
+    float: center;
+}
+
+.bar-item:hover {
+    color: black;
+    background-color: orange;
+}
+
+.logo {
+    text-decoration: none;
+    padding-right: 10px;
+    float: left;
+    width: 30px;
+}
