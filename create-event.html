@@ -1,6 +1,7 @@
 <html lang="en">
     <head>
         <script src="https://kit.fontawesome.com/887b4d11ec.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src=""></script>
         <link rel="stylesheet" href="style.css">
 
@@ -21,16 +22,18 @@
                         <img src="exampleeventphoto.png" class="event-image-select" alt="Event Image" />
                     </div>
 
-                    <div id="event-details" class="inline top-align">
+                    <div id="event-details" class="inline top-align details">
                         <input id="event-name" type="text" placeholder="My Event" class="left"/>
-
+                        <br/>
                         <hr/>
 
                         <div id="event-datetime">
                             <i class="fas fa-calendar-days fa-lg"></i>
                             <input id="event-time" type="time" placeholder="12:30 PM"/>
+                            <br/>
                             <input id="event-date" type="date" placeholder="1/5/2022"/>
                         </div>
+
 
                         <div id="event-place">
                             <i class="fas fa-location-dot fa-lg"></i>
@@ -38,6 +41,7 @@
                         </div>
                         <div id="event-done">
                             <button class="done-button" id="event-submit">Create</button>
+                            <button class="done-button" id="event-share">Share</button>
                         </div>
                     </div>
 
