@@ -57,6 +57,10 @@ body{
     color: white;
 }
 
+.eventlist {
+    width: 100%;
+}
+
 .eventbox {
     text-align: left;
     display: flex;
@@ -68,6 +72,7 @@ body{
 
 .eventcontent {
     padding-left: 20px;
+    padding-right: 20px;
     width: 100%;
     position: relative;
 }
