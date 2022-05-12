@@ -187,3 +187,7 @@ input {
 .inline {
     display: inline-block;
 }
+
+.event-image-select {
+    height: 100%;
+}
