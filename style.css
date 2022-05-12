@@ -29,6 +29,8 @@ body{
     height: auto;
     background-color: white;
     background-clip: content-box;
+    /* thoughts? */
+    border-radius: 15px 0px 15px 0px
 }
 
 .logincontent {
