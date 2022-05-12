@@ -124,10 +124,10 @@ body{
 }
 
 .bar-important {
-    background-color: orange;
+    background-color: coral;
 }
 .bar-important:hover {
-    background-color: coral;
+    background-color: orange;
 }
 
 .bar-search {
@@ -143,4 +143,17 @@ body{
     margin-top: 2px;
     float: left;
     width: 40px;
+}
+
+.white-box {
+    background-color: white;
+}
+
+.angled-corners {
+    border-radius: 15px 0px 15px 0px;
+}
+
+.event-creation-box {
+    width: 600px;
+    height: 4;
 }
