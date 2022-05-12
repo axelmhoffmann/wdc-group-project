@@ -185,11 +185,13 @@ input {
 
 .inline {
     display: inline-block;
+    float: left;
 }
 .top-align {
     vertical-align:top;
 }
 
 .event-image-select {
-    height: 400px
+    height: 400px;
+    padding-right: 20px
 }
