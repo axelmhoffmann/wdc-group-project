@@ -1,3 +1,4 @@
+@import url(‘https://fonts.googleapis.com/css?family=Inter’);
 .password {
     text-security: circle; /* IE/Safari */
     -moz-text-security: circle; /* FireFox */
@@ -161,6 +162,7 @@ input {
     margin: 6px;
     padding: 8px 15px 6px 15px;
     border-radius: 50px;
+    border: 2px solid black;
     font-family: sans-serif, FontAwesome;
 }
 
