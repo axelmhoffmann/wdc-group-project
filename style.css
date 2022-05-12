@@ -1,3 +1,4 @@
+@import url(‘https://fonts.googleapis.com/css?family=Inter’);
 .password {
     text-security: circle; /* IE/Safari */
     -moz-text-security: circle; /* FireFox */
@@ -56,6 +57,10 @@ body{
     color: white;
 }
 
+.eventlist {
+    width: 100%;
+}
+
 .eventbox {
     text-align: left;
     display: flex;
@@ -67,6 +72,7 @@ body{
 
 .eventcontent {
     padding-left: 20px;
+    padding-right: 20px;
     width: 100%;
     position: relative;
 }
@@ -161,6 +167,7 @@ input {
     margin: 6px;
     padding: 8px 15px 6px 15px;
     border-radius: 50px;
+    border: 2px solid black;
     font-family: sans-serif, FontAwesome;
 }
 
