@@ -124,10 +124,10 @@ body{
 }
 
 .bar-important {
-    background-color: lightgreen;
+    background-color: orange;
 }
 .bar-important:hover {
-    background-color: orange;
+    background-color: coral;
 }
 
 .bar-search {
