@@ -186,7 +186,10 @@ input {
 .inline {
     display: inline-block;
 }
+.top-align {
+    vertical-align:top;
+}
 
 .event-image-select {
-    object-fit: contain;
+    height: 500px
 }
