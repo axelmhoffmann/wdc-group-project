@@ -154,7 +154,7 @@ body{
 }
 
 .event-creation-box {
-
+    width: 100%
 }
 
 input {
@@ -191,5 +191,5 @@ input {
 }
 
 .event-image-select {
-    height: 500px
+    height: 400px
 }
