@@ -162,6 +162,24 @@ input {
     margin: 6px;
     padding: 8px 15px 6px 15px;
     border-radius: 50px;
-    border: 2px solid black;
     font-family: sans-serif, FontAwesome;
+}
+
+.input-field {
+    border: 2px solid black;
+}
+
+.done-button {
+    text-decoration: none;
+    padding: 10px 30px 10px 30px;
+    margin: 6px;
+    color: white;
+    float: right;
+    background-color: coral;
+    border-radius: 50px;
+    border-width: 0px;
+}
+
+.done-button:hover {
+    background-color: orange;
 }
