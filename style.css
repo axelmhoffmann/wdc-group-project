@@ -154,8 +154,7 @@ body{
 }
 
 .event-creation-box {
-    width: 1000px;
-    height: 500px;
+
 }
 
 input {
@@ -189,5 +188,5 @@ input {
 }
 
 .event-image-select {
-    height: 100%;
+    object-fit: contain;
 }
