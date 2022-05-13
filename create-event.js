@@ -26,7 +26,7 @@ var app = new Vue({
         { name: 'McLovin', image: 'mclovin.png' }
       ]
     }
-  })
+});
 
   function inviteUser(index)
   {

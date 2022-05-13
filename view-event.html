@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://kit.fontawesome.com/6328526eee.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+        <script src="loader.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>View Event</title>
+    </head>
+    <body>
+        <div id="navbar"></div>
+        <div id="app" class="app">
+            <div id="content" class="content">
+                <div class="white-box eventlist">
+                    <div id="event-image" onclick="" class="inline">
+                        <img :src="eventListings[getEventIndex()].image" class="event-image-select" alt="Event Image" />
+                    </div>
+                    <div id="event-details" class="inline details">
+                        <div class="event-title">
+                            <h1>{{eventListings[getEventIndex()].title}}</h1>
+                            <i class="fa-solid fa-clock fa-lg"></i>
+                            <span>{{eventListings[getEventIndex()].date.toLocaleDateString() + ' ' + eventListings[getEventIndex()].date.toLocaleTimeString()}}</span>
+                            <i class="fa-solid fa-location-dot fa-lg"></i>
+                            <span>{{eventListings[getEventIndex()].location}}</span>
+                            <i class="fa-solid fa-user-check fa-lg"></i>
+                            <span class="boldnum">{{getPeopleGoing(getEventIndex())}}</span><span> going </span><span class="boldnum">{{getPeopleMaybeGoing(getEventIndex())}}</span><span> maybe going </span>
+                            <hr>
+                        </div>
+                        <div class="eventdetails">
+                            <p>{{eventListings[getEventIndex()].description}}</p>
+                        </div>
+                        <div class="eventactioncontainer">
+                            <button class="response-button going">Going</button>
+                            <button class="response-button notgoing">Not Going</button>
+                        </div>
+                        <div class="event-share-buttons">
+                            <button class="done-button">Share Event</button>
+                            <br>
+                            <button class="done-button">Link Calendar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="events.js"></script>
+    </body>
+</html>

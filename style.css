@@ -1,6 +1,5 @@
 @import url(‘https://fonts.googleapis.com/css?family=Inter’);
 .password {
-    text-security: circle; /* IE/Safari */
     -moz-text-security: circle; /* FireFox */
     -webkit-text-security: circle; /* Chrome/Safari  */
 }
@@ -81,12 +80,19 @@ body{
     display: flex;
 }
 
-.viewbuttoncontainer {
+.eventactioncontainer {
     position: absolute;
     bottom: 0;
     right: 0;
     margin: 20px;
     text-align: right;
+}
+
+.event-share-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
 }
 
 .eventviewbutton {
@@ -153,6 +159,8 @@ body{
 
 .white-box {
     background-color: white;
+    min-width: 1000px;
+    height:400px;
 }
 
 .angled-corners {
@@ -183,12 +191,13 @@ input {
 }
 .done-button {
     text-decoration: none;
-    padding: 10px 30px 10px 30px;
+    padding: 10px;
     margin: 6px;
     color: white;
     background-color: coral;
     border-radius: 50px;
     border-width: 0px;
+    width:105px;
 }
 
 .done-button:hover {
@@ -303,4 +312,36 @@ input {
 .user-icon {
     width: 60px;
     height: 60px;
+}
+
+.boldnum {
+    font-weight: bold;
+    font-size: large;
+}
+
+.response-button {
+    text-decoration: none;
+    padding: 16px;
+    color: white;
+    border-radius: 50px;
+    border-width: 0px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+
+.response-button:hover {
+    background-color: orange;
+}
+
+.going {
+    background-color: lightgreen;
+}
+
+.maybe {
+    background-color: grey;
+}
+
+.notgoing {
+    background-color: coral;
 }
