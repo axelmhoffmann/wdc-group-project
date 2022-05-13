@@ -7,13 +7,7 @@ function createEvent()
 function toggleShare()
 {
     var overlay = $("#share-overlay")[0];
-    if (overlay.style.display = "none")
-    {
-        overlay.style.display = "block";
-    }
-    else
-    {
-    }
+    overlay.style.display = "block";
 }
 
 function hideShare()
@@ -21,3 +15,20 @@ function hideShare()
     var overlay = $("#share-overlay")[0];
     overlay.style.display = "none";
 }
+
+var app = new Vue({
+    el: '#app',
+    data: {
+      users: [
+        { name: 'Homer Simpson', image: 'homer.png' },
+        { name: 'Marge Simpson', image: 'marge.png' },
+        { name: 'Glenn Quagmire', image: 'quagmire.png' },
+        { name: 'McLovin', image: 'mclovin.png' }
+      ]
+    }
+  })
+
+  function inviteUser(index)
+  {
+
+  }

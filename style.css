@@ -261,23 +261,25 @@ input {
 
 .user-card {
     margin-bottom: 10px;
-    position: absolute;
     background-color: white;
     width: 90%;
-    left: 50%;
+    left: 5%;
     padding: 5px 5px 5px 20px;
     border-radius: 5px;
-    transform: translate(-50%, 0%);
     display: table;
 }
 
 .invite-button {
-    padding: 10px 10px 10px 10px;
+    width: 45px;
+    height: 45px;
     color: white;
     background-color: coral;
     border-radius: 5px;
     border-width: 0px;
     float: right;
+    text-align: center;
+    margin-bottom: 8px;
+    margin-right: 8px;
 }
 
 .invite-button:hover {
@@ -285,5 +287,20 @@ input {
 }
 
 .user-name {
-    display: table-cell; vertical-align: middle;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+}
+
+.user-icon-container {
+    border-radius: 50px;
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+    display: table-cell;
+}
+
+.user-icon {
+    width: 60px;
+    height: 60px;
 }

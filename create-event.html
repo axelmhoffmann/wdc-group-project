@@ -15,9 +15,10 @@
                 <div id="share-div" class="share-div">
                     <input type="search" class="bar-search wide-input" placeholder="&#xf002 Search users..."/>
                     <div class="users-box">
-                        <div class="user-card">
-                            <span class="user-name">Homer Simpson</span>
-                            <button class="invite-button"><i class="fa-solid fa-square-plus fa-2x"></i></button>
+                        <div v-for="(user, index) in users" class="user-card">
+                            <div class="user-icon-container"><img class="user-icon" v-bind:src="user.image"/></div>
+                            <span class="user-name">{{ user.name }}</span>
+                            <button class="invite-button" v-bind:onclick="inviteUser(index)"><i class="fa-solid fa-square-plus fa-2x"></i></button>
                         </div>
                     </div>
                     <div class="buttons">
