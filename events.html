@@ -4,6 +4,9 @@
         <script src="https://kit.fontawesome.com/6328526eee.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Azeret+Mono">
         <script src="loader.js"></script>
         <link rel="stylesheet" href="style.css">
         <title>Events</title>
@@ -14,10 +17,10 @@
         <div id="app" class="app">
             <div class="content">
                 <div class="eventlist">
-                    <h1>Events</h1>
+                    <h1 style="color:grey;font-size:72px">Events</h1>
                     <div class="eventbox" v-for="(event, index) in eventListings">
                         <div class="eventphoto">
-                            <img :src="event.image" alt="Event Image" />
+                            <img class="eventphoto" :src="event.image" alt="Event Image" />
                         </div>
                         <div class="eventcontent">
                             <div class="eventdetails">
@@ -25,12 +28,14 @@
                                 <p>{{event.description}}</p>
                             </div>
                             <div class="eventactioncontainer">
-                                <i class="fa-solid fa-clock fa-lg"></i>
+				<div class="info time">
                                 <span>{{event.date.toLocaleDateString() + ' ' + event.date.toLocaleTimeString()}}</span>
-                                <br/>
-                                <i class="fa-solid fa-location-dot fa-lg"></i>
+                                <i class="fa-solid fa-clock"></i>
+				</div>
+				<div class="info location">
                                 <span>{{event.location}}</span>
-                                <br/>
+                                <i class="fa-solid fa-location-dot"></i>
+				</div>
                                 <button class="done-button" v-on:click="viewEvent(index)">View Event</button>
                             </div>
                         </div>

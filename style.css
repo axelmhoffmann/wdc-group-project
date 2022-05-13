@@ -6,7 +6,7 @@
 
 body{
     background-color: lightgrey;
-    font-family: Inter, sans-serif;
+    font-family: Azeret Mono, sans-serif;
     margin: 0;
 }
 
@@ -15,6 +15,10 @@ body{
     margin: auto;
     text-align: center;
     margin-top: 100px;
+}
+
+h2 {
+    margin-bottom: -10px;
 }
 
 .content {
@@ -29,8 +33,7 @@ body{
     height: auto;
     background-color: white;
     background-clip: content-box;
-    /* thoughts? */
-    border-radius: 15px 0px 15px 0px
+    border-radius: 25px;
 }
 
 .logincontent {
@@ -39,6 +42,7 @@ body{
 }
 
 .loginform {
+    margin-top: 20px;
 }
 
 .loginbutton {
@@ -60,13 +64,18 @@ body{
     width: 100%;
 }
 
+.event-title {
+    margin-right: 160px;
+}
+
 .eventbox {
     text-align: left;
     display: flex;
-    padding: 50px;
+    margin: 50px;
     height: 300px;
     background-color: white;
     background-clip: content-box;
+    border-radius: 25px;
 }
 
 .eventcontent {
@@ -78,6 +87,7 @@ body{
 
 .eventphoto {
     display: flex;
+    border-radius: 25px 0px 0px 25px;
 }
 
 .eventactioncontainer {
@@ -88,11 +98,24 @@ body{
     text-align: right;
 }
 
+.info {
+    margin: 0px 6px 6px 0px;
+    color: grey;
+}
+
+.location {
+    margin: 0px 8px 0px 0px;
+}
+
 .event-share-buttons {
     position: absolute;
     top: 0;
     right: 0;
-    margin: 20px;
+    margin: 25px 10px 15px 15px;
+}
+
+hr {
+    margin-top: 20px;
 }
 
 .eventviewbutton {
@@ -112,20 +135,23 @@ body{
 .bar {
     background-color: white;
     display: flex;
+    height: 70px;
     width: 100%;
     padding: 8px;
     justify-content: center;
     position: fixed;
     top: 0;
     z-index: 2;
-    box-shadow: 0px 2px 4px #0000004a;
+    box-shadow: 0px 2px 16px #0000002a;
 }
 
 .bar-item {
     text-decoration: none;
     padding: 8px 15px 6px 15px;
-    margin: 6px;
+    margin: 20px;
+    margin-bottom: 18px;
     color: black;
+    background-color: lightgrey;
     float: right;
     border-radius: 50px;
 }
@@ -147,12 +173,13 @@ body{
     padding: 8px 15px 6px 15px;
     border-radius: 50px;
     border: 2px solid black;
-    font-family: sans-serif, FontAwesome;
+    margin: 20px;
+    margin-bottom: 18px;
 }
 .logo {
     text-decoration: none;
     padding-right: 10px;
-    margin-top: 2px;
+    margin-top: 15px;
     float: left;
     width: 40px;
 }
@@ -161,6 +188,7 @@ body{
     background-color: white;
     min-width: 1000px;
     height:400px;
+    border-radius: 25px;
 }
 
 .angled-corners {
@@ -176,7 +204,7 @@ input {
     padding: 8px 15px 6px 15px;
     border-radius: 50px;
     border: 2px solid black;
-    font-family: sans-serif, FontAwesome;
+    font-family: Azeret Mono, sans-serif, FontAwesome;
 }
 
 .input-field {
@@ -193,11 +221,13 @@ input {
     text-decoration: none;
     padding: 10px;
     margin: 6px;
+    margin-top: 8px;
     color: white;
     background-color: coral;
     border-radius: 50px;
     border-width: 0px;
-    width:105px;
+    width:140px;
+    font-family: Azeret Mono, sans-serif, FontAwesome;
 }
 
 .done-button:hover {
@@ -214,9 +244,10 @@ input {
 
 .event-image-select {
     height: 400px;
-    padding-right: 20px
+    padding-right: 20px;
+    border-radius: 25px 0px 0px 25px;
 }
-
+ 
 .details {
     text-align:left;
     height: calc(400px - 20px);
@@ -316,12 +347,13 @@ input {
 
 .boldnum {
     font-weight: bold;
-    font-size: large;
 }
 
 .response-button {
+    font-family: Azeret Mono;
     text-decoration: none;
-    padding: 16px;
+    padding: 10px 15px 10px 15px;
+    margin: 0px 0px 15px 10px;
     color: white;
     border-radius: 50px;
     border-width: 0px;

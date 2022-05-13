@@ -6,6 +6,7 @@
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
         <script src="loader.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Azeret+Mono">
         <link rel="stylesheet" href="style.css">
         <title>View Event</title>
     </head>
@@ -20,11 +21,11 @@
                     <div id="event-details" class="inline details">
                         <div class="event-title">
                             <h1>{{eventListings[getEventIndex()].title}}</h1>
-                            <i class="fa-solid fa-clock fa-lg"></i>
+                            <i class="fa-solid fa-clock"></i>
                             <span>{{eventListings[getEventIndex()].date.toLocaleDateString() + ' ' + eventListings[getEventIndex()].date.toLocaleTimeString()}}</span>
-                            <i class="fa-solid fa-location-dot fa-lg"></i>
+                            <i class="fa-solid fa-location-dot"></i>
                             <span>{{eventListings[getEventIndex()].location}}</span>
-                            <i class="fa-solid fa-user-check fa-lg"></i>
+                            <i class="fa-solid fa-user-check"></i>
                             <span class="boldnum">{{getPeopleGoing(getEventIndex())}}</span><span> going </span><span class="boldnum">{{getPeopleMaybeGoing(getEventIndex())}}</span><span> maybe going </span>
                             <hr>
                         </div>
