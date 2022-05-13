@@ -3,60 +3,41 @@
     <head>
         <script src="https://kit.fontawesome.com/6328526eee.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
         <script src="loader.js"></script>
         <link rel="stylesheet" href="style.css">
         <title>Events</title>
-        <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
     </head>
     <body>
         <div id="navbar"></div>
 
-        <div class="app">
+        <div id="app" class="app">
             <div class="content">
                 <div class="eventlist">
                     <h1>Events</h1>
-                    <div class="eventbox">
+                    <div class="eventbox" v-for="(event, index) in eventListings">
                         <div class="eventphoto">
-                            <img src="exampleeventphoto.png" alt="Event Image" />
+                            <img :src="event.image" alt="Event Image" />
                         </div>
                         <div class="eventcontent">
                             <div class="eventdetails">
-                                <h2>Birthday Party</h2>
-                                <p>Event description. Lorem ipsum dolor sit amet.</p>
+                                <h2>{{event.title}}</h2>
+                                <p>{{event.description}}</p>
                             </div>
                             <div class="eventactioncontainer">
                                 <i class="fa-solid fa-clock fa-lg"></i>
-                                <span>8:00 PM 01/01/2023</span>
+                                <span>{{event.date.toLocaleDateString() + ' ' + event.date.toLocaleTimeString()}}</span>
                                 <br/>
                                 <i class="fa-solid fa-location-dot fa-lg"></i>
-                                <span>8 Lane Street, Suburbville</span>
+                                <span>{{event.location}}</span>
                                 <br/>
-                                <button class="done-button">View Event</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="eventbox">
-                        <div class="eventphoto">
-                            <img src="exampleeventphoto.png" alt="Event Image" />
-                        </div>
-                        <div class="eventcontent">
-                            <div class="eventdetails">
-                                <h2>Birthday Party</h2>
-                                <p>Event description. Lorem ipsum dolor sit amet.</p>
-                            </div>
-                            <div class="eventactioncontainer">
-                                <i class="fa-solid fa-clock fa-lg"></i>
-                                <span>8:00 PM 01/01/2023</span>
-                                <br/>
-                                <i class="fa-solid fa-location-dot fa-lg"></i>
-                                <span>8 Lane Street, Suburbville</span>
-                                <br/>
-                                <button class="done-button">View Event</button>
+                                <button class="done-button" v-on:click="viewEvent(index)">View Event</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="events.js"></script>
     </body>
 </html>
