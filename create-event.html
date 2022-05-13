@@ -2,6 +2,7 @@
     <head>
         <script src="https://kit.fontawesome.com/887b4d11ec.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
         <script src="loader.js"></script>
         <script src=""></script>
         <link rel="stylesheet" href="style.css">
@@ -12,7 +13,16 @@
         <div id="app" class="app">
             <div id="share-overlay" class="overlay">
                 <div id="share-div" class="share-div">
-
+                    <input type="search" class="bar-search wide-input" placeholder="&#xf002 Search users..."/>
+                    <div class="users-box">
+                        <div class="user-card">
+                            <span class="user-name">Homer Simpson</span>
+                            <button class="invite-button"><i class="fa-solid fa-square-plus fa-2x"></i></button>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="done-button" id="done-sharing" onclick="hideShare()">Done</button>
+                    </div>
                 </div>
             </div>
             <div id="content" class="content">
@@ -47,7 +57,6 @@
                 </div>
             </div>
         </div>
-
         <script src="create-event.js"></script>
     </body>
 </html>

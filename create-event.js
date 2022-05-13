@@ -13,6 +13,11 @@ function toggleShare()
     }
     else
     {
-        overlay.style.display = "none";
     }
+}
+
+function hideShare()
+{
+    var overlay = $("#share-overlay")[0];
+    overlay.style.display = "none";
 }
