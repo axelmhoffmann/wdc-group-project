@@ -4,7 +4,15 @@ function createEvent()
     console.log("sending event to server :)");
 }
 
-function openShareMenu()
+function toggleShare()
 {
-    // Opens the share event menu
+    var overlay = $("#share-overlay")[0];
+    if (overlay.style.display = "none")
+    {
+        overlay.style.display = "block";
+    }
+    else
+    {
+        overlay.style.display = "none";
+    }
 }

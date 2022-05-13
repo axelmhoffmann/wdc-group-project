@@ -11,6 +11,9 @@
         <div id="navbar"></div>
         <div id="app" class="app">
             <div id="share-overlay" class="overlay">
+                <div id="share-div" class="share-div">
+
+                </div>
             </div>
             <div id="content" class="content">
                 <div class="white-box event-creation-box">
@@ -27,7 +30,6 @@
                         <div id="event-datetime">
                             <i class="fas fa-calendar-days fa-lg"></i>
                             <input id="event-time" type="time" placeholder="12:30 PM"/>
-                            <br/>
                             <input id="event-date" type="date" placeholder="1/5/2022"/>
                         </div>
 
@@ -36,14 +38,16 @@
                             <i class="fas fa-location-dot fa-lg"></i>
                             <input id="event-place" placeholder="742 Evergreen Terrace"/>
                         </div>
-                        <div id="event-done">
+                        <div id="event-done" class="buttons">
                             <button class="done-button" id="event-submit">Create</button>
-                            <button class="done-button" id="event-share">Share</button>
+                            <button class="done-button" id="event-share" onclick="toggleShare()">Share</button>
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
+
+        <script src="create-event.js"></script>
     </body>
 </html>
