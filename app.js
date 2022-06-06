@@ -5,10 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+const {OAuth2Client} = require('google-auth-library');
+const client = new OAuth2Client('609304362450-1tfan4m8cutuq818jb9573dggaoglnbr.apps.googleusercontent.com');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,14 +32,45 @@ app.post('/login', function(req, res, next)
     {
         var username = req.body.user;
         var password = req.body.password;
+
+        var success = true;
         // Find user in sql database
-        // Send either session token if success or error code if fail
+
+        if (success)
+        {
+            // TODO: add session token and stuff
+            res.send(200);
+        }
+        else
+        {
+            res.send(401);
+        }
     }
     // We have a google login
     else if ('token' in req.body)
     {
         var token = req.body.token;
-        
+        let email = null;
+        // Process token
+        async function verify()
+        {
+          const ticket = await client.verifyIdToken({
+              idToken: token,
+              audience: '609304362450-1tfan4m8cutuq818jb9573dggaoglnbr.apps.googleusercontent.com',
+          });
+          const payload = ticket.getPayload();
+          const userid = payload['sub'];
+          email = payload['email'];
+        }
+
+        verify().then(function()
+        {
+            // Add user to database if not there
+        }).catch(function()
+        {
+            // Send 403 if fail
+            res.sendStatus(403);
+        });
     }
 });
 

@@ -36,7 +36,6 @@ function login()
         if (this.readyState == 4 && this.status == 200)
         {
             console.log("login successful");
-            // TODO: add session code from response or something?
             window.location.replace("events.html");
         }
         else if (this.readyState == 4 && this.status >= 400)
@@ -47,7 +46,7 @@ function login()
 
     xhttp.open("POST", "/login")
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.sent(JSON.stringify({
+    xhttp.send(JSON.stringify({
         user: email,
         password: pword
     }));
@@ -55,5 +54,27 @@ function login()
 
 function signup()
 {
+    var email = document.getElementById("email").value;
+    var pword = document.getElementById("password").value;
 
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState == 4 && this.status == 200)
+        {
+            console.log("signup successful");
+        }
+        else if (this.readyState == 4 && this.status >= 400)
+        {
+            console.log("login failed");
+        }
+    };
+
+    xhttp.open("POST", "/signup")
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify({
+        user: email,
+        password: pword
+    }));
 }
