@@ -76,7 +76,21 @@ app.post('/login', function(req, res, next)
 
 app.post('/signup', function(req, res, next)
 {
+    var username = req.body.user;
+    var password = req.body.password;
 
+    var success = true;
+    // Add user to database
+
+    if (success)
+    {
+        // ALSO LOG IN THE USER HERE
+        res.sendStatus(200);
+    }
+    else
+    {
+        res.sendStatus(401);
+    }
 });
 
 // catch 404 and forward to error handler
