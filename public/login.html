@@ -24,15 +24,15 @@
                             <h2>Log in</h2>
                             <div class="loginform">
                                 <div class="">
-                                    <input type="text" class="username" placeholder="Username or E-mail">
+                                    <input id="email" type="text" class="username" placeholder="E-Mail">
                                 </div>
                                 <div>
-                                    <input type="text" class="password" placeholder="Password">
+                                    <input id="password" type="text" class="password" placeholder="Password">
                                 </div>
                             </div>
                             <div class="g-signin2" data-onsuccess="googleSignIn" data-theme="dark"></div>
-                            <button class="loginbutton">Log in</button>
-                            <button class="loginbutton">Sign up</button>
+                            <button class="loginbutton" onclick="login()">Log in</button>
+                            <button class="loginbutton" onclick="signup()">Sign up</button>
                         </div>
                     </div>
                 </div>
