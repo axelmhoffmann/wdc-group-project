@@ -20,10 +20,10 @@ var app = new Vue({
     el: '#app',
     data: {
       users: [
-        { name: 'Homer Simpson', image: 'homer.png' },
-        { name: 'Marge Simpson', image: 'marge.png' },
-        { name: 'Glenn Quagmire', image: 'quagmire.png' },
-        { name: 'McLovin', image: 'mclovin.png' }
+        { name: 'Homer Simpson', image: 'images/homer.png' },
+        { name: 'Marge Simpson', image: 'images/marge.png' },
+        { name: 'Glenn Quagmire', image: 'images/quagmire.png' },
+        { name: 'McLovin', image: 'images/mclovin.png' }
       ]
     }
 });
