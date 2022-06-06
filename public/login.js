@@ -11,7 +11,7 @@ function googleSignIn(googleUser)
         {
             console.log("login successful");
         }
-        else if (this.readyState == 4 && this.status >= 400
+        else if (this.readyState == 4 && this.status >= 400)
         {
             console.log("login failed");
         }
@@ -27,8 +27,8 @@ function googleSignIn(googleUser)
 function login()
 {
     var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var user
+    var pword = document.getElementById("password").value;
+
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function ()
@@ -37,7 +37,7 @@ function login()
         {
             console.log("login successful");
         }
-        else if (this.readyState == 4 && this.status >= 400
+        else if (this.readyState == 4 && this.status >= 400)
         {
             console.log("login failed");
         }
@@ -46,6 +46,7 @@ function login()
     xhttp.open("POST", "/login")
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.sent(JSON.stringify({
-        token: gtoken
+        user: email,
+        password: pword
     }));
 }
