@@ -37,7 +37,7 @@ app.post('/login', function(req, res, next)
     else if ('token' in req.body)
     {
         var token = req.body.token;
-        // Something something handl
+        
     }
 });
 
