@@ -36,6 +36,8 @@ function login()
         if (this.readyState == 4 && this.status == 200)
         {
             console.log("login successful");
+            // TODO: add session code from response or something?
+            window.location.replace("events.html");
         }
         else if (this.readyState == 4 && this.status >= 400)
         {
@@ -49,4 +51,9 @@ function login()
         user: email,
         password: pword
     }));
+}
+
+function signup()
+{
+
 }

@@ -22,7 +22,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/login', loginRouter);
+
+app.post('/login', function(req, res, next)
+{
+    // We have a standard login
+    if ('user' in req.body && 'password' in req.body)
+    {
+        var username = req.body.user;
+        var password = req.body.password;
+        // Find user in sql database
+        // Send either session token if success or error code if fail
+    }
+    // We have a google login
+    else if ('token' in req.body)
+    {
+        var token = req.body.token;
+        // Something something handl
+    }
+});
+
+app.post('/signup', function(req, res, next)
+{
+
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
