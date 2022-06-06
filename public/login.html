@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="google-signin-client_id" content="609304362450-1tfan4m8cutuq818jb9573dggaoglnbr.apps.googleusercontent.com">
+        <meta name="google-signin-plugin_name" content="APP">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="https://kit.fontawesome.com/6328526eee.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="loader.js"></script>
+        <script src="login.js"></script>
         <link rel="stylesheet" href="style.css">
         <title>Login</title>
         <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
@@ -22,10 +26,11 @@
                                 <div class="">
                                     <input type="text" class="username" placeholder="Username or E-mail">
                                 </div>
-			        <div>
+                                <div>
                                     <input type="text" class="password" placeholder="Password">
                                 </div>
                             </div>
+                            <div class="g-signin2" data-onsuccess="googleSignIn" data-theme="dark"></div>
                             <button class="loginbutton">Log in</button>
                             <button class="loginbutton">Sign up</button>
                         </div>
