@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="style.css">
         <title>View Event</title>
     </head>
-    <body>
+    <body onload="app.displayEvents()">
         <div id="navbar"></div>
         <div id="app" class="app">
             <div id="content" class="content">
@@ -20,17 +20,17 @@
                     </div>
                     <div id="event-details" class="inline details">
                         <div class="event-title">
-                            <h1>{{eventListings[getEventIndex()].title}}</h1>
+                            <h1>{{eventListings[getEventIndex()].event_name}}</h1>
                             <i class="fa-solid fa-clock"></i>
-                            <span>{{eventListings[getEventIndex()].date.toLocaleDateString() + ' ' + eventListings[getEventIndex()].date.toLocaleTimeString()}}</span>
+                            <span>{{eventListings[getEventIndex()].event_date}}</span>
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>{{eventListings[getEventIndex()].location}}</span>
+                            <span>{{eventListings[getEventIndex()].event_place}}</span>
                             <i class="fa-solid fa-user-check"></i>
                             <span class="boldnum">{{getPeopleGoing(getEventIndex())}}</span><span> going </span><span class="boldnum">{{getPeopleMaybeGoing(getEventIndex())}}</span><span> maybe going </span>
                             <hr>
                         </div>
                         <div class="eventdetails">
-                            <p>{{eventListings[getEventIndex()].description}}</p>
+                            <p>{{eventListings[getEventIndex()].event_desc}}</p>
                         </div>
                         <div class="eventactioncontainer">
                             <button class="response-button going">Going</button>

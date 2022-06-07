@@ -25,6 +25,8 @@ router.get('/events', function(req, res, next) {
     });
 });
 
+var image = "placeholder.jpg";
+
 router.post('/events', function(req, res) {
     req.pool.getConnection( function(err, connection) {
         if (err) {
@@ -32,7 +34,7 @@ router.post('/events', function(req, res) {
             res.sendStatus(500);
             return;
         }
-        var query = "INSERT INTO event(event_name, event_date, event_desc, event_place) VALUES('" + req.body.event_name + "', '" + req.body.event_date + "', '" + req.body.event_desc + "', '" + req.body.event_place + "');";
+        var query = "INSERT INTO event(image, event_name, event_date, event_desc, event_place) VALUES('"+image+"', '"+req.body.event_name+"', '"+req.body.event_date+"', '"+req.body.event_desc+"', '"+req.body.event_place+"');";
         connection.query(query, function(err, rows, fields) {
             connection.release();
             if (err) {
