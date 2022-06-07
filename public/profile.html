@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://kit.fontawesome.com/887b4d11ec.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Azeret+Mono">
+        <script src="loader.js"></script>
+        <script src=""></script>
+        <link rel="stylesheet" href="style.css">
+        <title>Davent Profile</title>
+    </head>
+    <body>
+        <div id="navbar"></div>
+        <div id="app" class="app">
+            <div id="share-overlay" class="overlay">
+                <div id="share-div" class="share-div">
+                    <input type="search" class="bar-search wide-input" placeholder="&#xf002 Search users..."/>
+                    <div class="users-box">
+                        <div v-for="(user, index) in users" class="user-card">
+                            <div class="user-icon-container"><img class="user-icon" v-bind:src="user.image"/></div>
+                            <span class="user-name">{{ user.name }}</span>
+                            <button class="invite-button" v-bind:onclick="inviteUser(index)"><i class="fa-solid fa-square-plus fa-2x"></i></button>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="done-button" id="done-sharing" onclick="hideShare()">Done</button>
+                    </div>
+                </div>
+            </div>
+            <div id="content" class="content">
+                <div class="white-box event-creation-box">
+
+                    <div id="event-image" onclick="" class="inline">
+                        <img src="exampleeventphoto.png" class="event-image-select" alt="Event Image" />
+                    </div>
+
+                    <div id="event-details" class="inline top-align details">
+                        <input id="event-name" type="text" placeholder="My Event" class="left"/>
+                        <br/>
+                        <hr/>
+
+                        <div id="event-datetime">
+                            <i class="fas fa-calendar-days fa-lg"></i>
+                            <input id="event-date" type="datetime-local" placeholder="1/5/2022"/>
+                        </div>
+
+
+                        <div id="event-location">
+                            <i class="fas fa-location-dot fa-lg"></i>
+                            <input id="event-place" placeholder="742 Evergreen Terrace"/>
+                        </div>
+                        <div id="event-done" class="buttons">
+                            <button class="done-button" id="event-submit" onclick="addEvent()">Create</button>
+                            <button class="done-button" id="event-share" onclick="toggleShare()">Share</button>
+                        </div>
+                        <textarea placeholder="Enter a description of your event here..." id="event-desc"></textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="create-event.js"></script>
+    </body>
+</html>
