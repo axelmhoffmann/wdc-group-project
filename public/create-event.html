@@ -51,10 +51,14 @@
                             <input id="event-place" placeholder="742 Evergreen Terrace"/>
                         </div>
                         <div id="event-done" class="buttons">
-                            <button class="done-button" id="event-submit" onclick="addEvent()">Create</button>
+                            <button class="done-button" id="event-submit" onclick="addEvent();location.href='events.html';">Create</button>
                             <button class="done-button" id="event-share" onclick="toggleShare()">Share</button>
                         </div>
                         <textarea placeholder="Enter a description of your event here..." id="event-desc"></textarea>
+                        <form method="post" action="upload/post" enctype="multipart/form-data">
+        <input type="file" name="image" /><br /><br />
+        <button type="submit" name="upload">Upload</button>
+      </form>
                     </div>
 
                 </div>
