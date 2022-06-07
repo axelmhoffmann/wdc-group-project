@@ -4,14 +4,13 @@
         <script src="https://kit.fontawesome.com/6328526eee.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Azeret+Mono">
         <script src="loader.js"></script>
         <link rel="stylesheet" href="style.css">
         <title>Events</title>
     </head>
-    <body>
+    <body onload="app.displayEvents()">
         <div id="navbar"></div>
 
         <div id="app" class="app">
@@ -24,16 +23,16 @@
                         </div>
                         <div class="eventcontent">
                             <div class="eventdetails">
-                                <h2>{{event.title}}</h2>
-                                <p>{{event.description}}</p>
+                                <h2>{{event.event_name}}</h2>
+                                <p>{{event.event_desc}}</p>
                             </div>
                             <div class="eventactioncontainer">
 				<div class="info time">
-                                <span>{{event.date.toLocaleDateString() + ' ' + event.date.toLocaleTimeString()}}</span>
+                                <span>{{event.event_date}}</span>
                                 <i class="fa-solid fa-clock"></i>
 				</div>
 				<div class="info location">
-                                <span>{{event.location}}</span>
+                                <span>{{event.event_place}}</span>
                                 <i class="fa-solid fa-location-dot"></i>
 				</div>
                                 <button class="done-button" v-on:click="viewEvent(index)">View Event</button>

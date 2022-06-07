@@ -7,7 +7,19 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var mysql = require('mysql');
+
+var dbConnectionPool = mysql.createPool({
+    host: 'localhost',
+    database: 'vent'
+});
+
 var app = express();
+
+app.use(function(req, res, next) {
+    req.pool = dbConnectionPool;
+    next();
+});
 
 const {OAuth2Client} = require('google-auth-library');
 const client = new OAuth2Client('609304362450-1tfan4m8cutuq818jb9573dggaoglnbr.apps.googleusercontent.com');
