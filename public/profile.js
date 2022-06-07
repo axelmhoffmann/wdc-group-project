@@ -1,6 +1,11 @@
 function getProfile()
 {
     // SEND GET REQUEST TO SERVER TO GET PROFILE INFO BACK. ONLY IF OWN PROFILE
+    var name = 'Quandale Dingle';
+    var email = 'quandingle@dingletonhigh.com';
+
+    document.getElementById("user-name").value = name;
+    document.getElementById("user-email").value = email;
 }
 
 function updateProfile()
@@ -10,54 +15,32 @@ function updateProfile()
     var newemail = document.getElementById("user-email").value;
     var newpassword = document.getElementById("new-password").value;
 
+    // TODO: Encrypt passwords
+
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function ()
     {
         if (this.readyState == 4 && this.status == 200)
         {
-            console.log("login successful");
+            console.log("update successful");
             window.location.replace("events.html");
         }
         else if (this.readyState == 4 && this.status >= 400)
         {
-            console.log("login failed");
+            console.log("update failed");
         }
     };
 
-    xhttp.open("POST", "/login")
+    xhttp.open("POST", "/updateuser")
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({
-        user: email,
-        password: pword
+        name: username,
+        currentpassword: currentpassword,
+        newemail: newemail,
+        newpassword: newpassword
     }));
 }
 
-function signup()
-{
-    var email = document.getElementById("email").value;
-    var pword = document.getElementById("password").value;
 
-    // TODO: HASH PASSWORDS IDK HOW DO THIS
-
-    let xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function ()
-    {
-        if (this.readyState == 4 && this.status == 200)
-        {
-            console.log("signup successful");
-        }
-        else if (this.readyState == 4 && this.status >= 400)
-        {
-            console.log("login failed");
-        }
-    };
-
-    xhttp.open("POST", "/signup")
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(JSON.stringify({
-        user: email,
-        password: pword
-    }));
-}
+getProfile();
