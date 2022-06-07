@@ -257,6 +257,10 @@ input {
     padding-bottom: 10px;
 }
 
+.large-details {
+    width: 80%;
+}
+
 .overlay {
     position: fixed;
     display: none;
