@@ -246,7 +246,7 @@ input {
     padding-right: 20px;
     border-radius: 25px 0px 0px 25px;
 }
- 
+
 .details {
     text-align:left;
     height: calc(400px - 20px);
@@ -375,4 +375,12 @@ input {
 
 .notgoing {
     background-color: coral;
+}
+
+.profile-picture
+{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 20px;
 }
