@@ -54,6 +54,8 @@ function login()
 
 function signup()
 {
+    var fname = document.getElementById("first_name").value;
+    var lname = document.getElementById("last_name").value;
     var email = document.getElementById("email").value;
     var pword = document.getElementById("password").value;
 
@@ -64,6 +66,7 @@ function signup()
         if (this.readyState == 4 && this.status == 200)
         {
             console.log("signup successful");
+            window.location.replace("login.html");
         }
         else if (this.readyState == 4 && this.status >= 400)
         {
@@ -74,7 +77,9 @@ function signup()
     xhttp.open("POST", "/signup")
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({
-        user: email,
+        first_name: fname,
+        last_name: lname,
+        email: email,
         password: pword
     }));
 }

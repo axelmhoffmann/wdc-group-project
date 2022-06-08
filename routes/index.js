@@ -94,7 +94,7 @@ router.post('/login', function(req, res, next)
 
 router.post('/signup', function(req, res, next)
 {
-  if ('user' in req.body && 'password' in req.body) {
+  if ('email' in req.body && 'password' in req.body) {
     req.pool.getConnection(async function(error,connection) {
       if (error) {
         console.log(error);
@@ -104,15 +104,15 @@ router.post('/signup', function(req, res, next)
 
       const hash = await bcrypt.hash(req.body.password, 10);
 
-      let query = "INSERT INTO user (email, password) VALUES (?, ?);";
-      connection.query(query, [req.body.user, hash], function(error, rows, fields) {
+      let query = "INSERT INTO user (first_name, last_name, email, password, privilege) VALUES (?, ?, ?, ?, 0);";
+      connection.query(query, [req.body.first_name, req.body.last_name, req.body.email, hash], function(error, rows, fields) {
         if (error) {
             console.log(error);
             res.sendStatus(500);
             return;
         }
         let query = "SELECT * FROM user WHERE email = ?;";
-        connection.query(query, [req.body.user], function(error, rows, fields) {
+        connection.query(query, [req.body.email], function(error, rows, fields) {
             connection.release();
             if (error) {
                 console.log(error);
@@ -120,9 +120,9 @@ router.post('/signup', function(req, res, next)
                 return;
             }
             if (rows.length > 0) {
-                req.session.user = rows[0];
                 res.sendStatus(200);
             } else {
+                console.log(error);
                 res.sendStatus(401);
             }
         });
