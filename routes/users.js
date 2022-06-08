@@ -19,17 +19,25 @@ router.post('/update', function(req, res, next)
             return;
         }
 
+        var newname = req.body.name;
+        var newemail = req.body.email;
+        var newpassword = req.body.newpassword;
+
+        // This request is made to target own profile
         if(!('targetid' in req.body))
         {
-            var newname = req.body.name;
-            var newemail = req.body.email;
-            var newpassword = req.body.newpassword;
             var userID = res.session.user.user_id;
 
-            str.split(/\s+/)
+            var names = str.split(/\s+/);
 
-            var query = "UPDATE user SET email = ?, first_name = ?, last_name = ?, password WHERE user_id = ?";
-            connection.query(query, [newemail, ]);
+            var query = "UPDATE user SET email = ?, first_name = ?, last_name = ?, password = ? WHERE user_id = ?";
+            connection.query(query, [newemail, names[0], names[1], newpassword, userID]);
+        }
+        else
+        {
+            // Updating someone else's profile
+            // Expect admin privelidge
+            if (req.)
         }
     });
 });

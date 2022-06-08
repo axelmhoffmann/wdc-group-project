@@ -31,7 +31,7 @@ function updateProfile()
         }
     };
 
-    xhttp.open("POST", "/updateuser")
+    xhttp.open("POST", "/users/update")
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({
         name: username,
