@@ -12,7 +12,9 @@ router.get('/myprofile', function(req, res, next)
 {
     if (!('user' in req.session))
     {
-        res.sendStatus(400)
+        res.sendStatus(403);
+        console.log("not logged in");
+        return;
     }
     res.send(JSON.stringify({
         name: req.session.user.first_name + " " + req.session.user.last_name,

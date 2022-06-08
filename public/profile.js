@@ -18,7 +18,6 @@ function getProfile()
     };
 
     xhttp.open("GET", "/users/myprofile")
-    xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
 }
 
