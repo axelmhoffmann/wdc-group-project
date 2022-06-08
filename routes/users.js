@@ -37,7 +37,14 @@ router.post('/update', function(req, res, next)
         {
             // Updating someone else's profile
             // Expect admin privelidge
-            if (req.)
+            if (req.session.privilege)
         }
+
+        connection.release();
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
     });
 });
