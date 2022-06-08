@@ -21,6 +21,8 @@ router.post('/update', function(req, res, next)
         var newname = req.body.name;
         var newemail = req.body.email;
         var newpassword = req.body.newpassword;
+        // aughashfjkdlkjhgfhaiksmnbvcdfg
+        var userID = res.session.user.user_id;
         var query = "UPDATE user SET email, first_name, last_name, password WHERE ";
     });
 });
