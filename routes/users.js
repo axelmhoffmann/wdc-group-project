@@ -20,7 +20,7 @@ router.post('/update', function(req, res, next)
         }
         var newname = req.body.name;
         var newemail = req.body.email;
-        var newpassword = req.body.newpassword
-        var query = "UPDATE user SET ";
+        var newpassword = req.body.newpassword;
+        var query = "UPDATE user SET email, first_name, last_name, password WHERE ";
     });
 });
