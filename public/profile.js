@@ -13,7 +13,7 @@ function getProfile()
         else if (this.readyState == 4 && this.status >= 400)
         {
             console.log("get profile failed");
-            
+            window.location.replace("login.html");
         }
     };
 

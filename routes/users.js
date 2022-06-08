@@ -10,6 +10,10 @@ module.exports = router;
 
 router.get('/myprofile', function(req, res, next)
 {
+    if (!('user' in req.session))
+    {
+        res.sendStatus(400)
+    }
     res.send(JSON.stringify({
         name: req.session.user.first_name + " " + req.session.user.last_name,
         email: req.session.user.email
