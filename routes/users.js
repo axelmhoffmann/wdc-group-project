@@ -8,13 +8,13 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-router.get('/myprofile', function(req, res, next))
+router.get('/myprofile', function(req, res, next)
 {
     res.send(JSON.stringify({
         name: req.session.user.first_name + " " + req.session.user.last_name,
-        email: req.session.user.email;
+        email: req.session.user.email
     }));
-}
+});
 
 router.post('/update', function(req, res, next)
 {

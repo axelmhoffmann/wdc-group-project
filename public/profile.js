@@ -1,9 +1,5 @@
 function getProfile()
 {
-    // SEND GET REQUEST TO SERVER TO GET PROFILE INFO BACK. ONLY IF OWN PROFILE
-    var name = 'Quandale Dingle';
-    var email = 'quandingle@dingletonhigh.com';
-
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function ()
@@ -16,15 +12,14 @@ function getProfile()
         }
         else if (this.readyState == 4 && this.status >= 400)
         {
-            console.log("update failed");
+            console.log("get profile failed");
+            
         }
     };
 
-    xhttp.open("GET", "/users/update")
+    xhttp.open("GET", "/users/myprofile")
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
-
-
 }
 
 function updateProfile()
