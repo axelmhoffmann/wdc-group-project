@@ -55,7 +55,9 @@ router.post('/login', function(req, res, next)
     else if ('token' in req.body)
     {
         var token = req.body.token;
-        let email = null;
+      let email = null;
+      let first_name = null;
+      let last_name = null;
         // Process token
         async function verify()
         {
@@ -66,7 +68,8 @@ router.post('/login', function(req, res, next)
           const payload = ticket.getPayload();
           const userid = payload['sub'];
           email = payload['email'];
-          console.log(userid + ", " + email);
+          first_name = payload['given_name'];
+          last_name = payload['family_name'];
         }
 
         verify().then(function()
@@ -90,10 +93,22 @@ router.post('/login', function(req, res, next)
                     req.session.user = rows[0];
                     res.sendStatus(200);
                 } else {
-                  query = "INSERT INTO user (email) VALUES (?);";
-                  connection.query(query, [email], function(error, rows, fields) {
+                  query = "INSERT INTO user (email, first_name, last_name, password) VALUES (?, ?, ?, '');";
+                  connection.query(query, [email, first_name, last_name], function(error, rows, fields) {
                     if (error) {
                       console.log(error);
+
+function hideShare()
+{
+    var overlay = $("#share-overlay")[0];
+    overlay.style.display = "none";
+}
+
+function hideShare()
+{
+    var overlay = $("#share-overlay")[0];
+    overlay.style.display = "none";
+}
                       res.sendStatus(500);
                       return;
                     }
@@ -126,7 +141,7 @@ router.post('/login', function(req, res, next)
 
 router.post('/signup', function(req, res, next)
 {
-  if (!req.body.user || !req.body.password) {
+  if (!req.body.email || !req.body.password) {
     res.sendStatus(400);
     return;
   }
@@ -167,8 +182,11 @@ router.post('/signup', function(req, res, next)
   }
 });
 
-
 router.get('/events', function(req, res, next) {
+  if (!req.session.user) {
+    res.sendStatus(403);
+    return;
+  }
     req.pool.getConnection( function(err, connection) {
         if (err) {
             console.log(err);
@@ -185,6 +203,41 @@ router.get('/events', function(req, res, next) {
             res.json(rows);
         });
     });
+});
+
+router.get('/event', function(req, res, next) {
+  if ('event_id' in req.query) {
+    req.pool.getConnection(function(err, connection) {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+
+      let event_id = req.query.event_id;
+
+        var query = "SELECT image, event_name, event_desc, event_place, event_date FROM event where event_id = ?";
+        connection.query(query, [event_id], function(err, rows, fields) {
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+          let data = rows[0];
+          var query = "SELECT COUNT(*) count from response where event_id = ? and response = true";
+          connection.query(query, [event_id], function(err, rows, fields) {
+            connection.release();
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+          data.going = rows[0].count;
+            res.json(data);
+            });
+        });
+    });
+  } else {
+    res.sendStatus(400);
+  }
 });
 
 var image = "placeholder.jpg";
@@ -206,6 +259,14 @@ router.post('/events', function(req, res) {
             }
         });
     });
+});
+
+router.get('/loggedin', function(req, res, next) {
+  if (req.session.user) {
+    res.json(true);
+  } else {
+    res.json(false);
+  }
 });
 
 module.exports = router;

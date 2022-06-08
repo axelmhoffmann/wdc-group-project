@@ -1,16 +1,3 @@
-function getEventIndex() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('i');
-}
-
-function getPeopleGoing(index) {
-    return 32;
-}
-
-function getPeopleMaybeGoing(index) {
-    return 42;
-}
-
 function viewEvent(index) {
   window.location.href="view-event.html?i=" + index;
 }
@@ -28,6 +15,8 @@ var app = new Vue({
                 if (this.readyState == 4 && this.status == 200) {
                     app.eventListings = JSON.parse(this.responseText);
                     console.log(app.eventListings);
+                } else if (this.status == 403) {
+                    window.location.replace("login.html");
                 }
             };
             xhttp.send();

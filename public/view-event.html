@@ -10,34 +10,34 @@
         <link rel="stylesheet" href="style.css">
         <title>View Event</title>
     </head>
-    <body onload="app.displayEvents()">
+    <body onload="">
         <div id="navbar"></div>
         <div id="app" class="app">
             <div id="content" class="content">
                 <div class="white-box eventlist">
                     <div id="event-image" onclick="" class="inline">
-                        <img :src="eventListings[getEventIndex()].image" class="event-image-select" alt="Event Image" />
+                        <img :src="event.image" class="event-image-select" alt="Event Image" />
                     </div>
                     <div id="event-details" class="inline details">
                         <div class="event-title">
-                            <h1>{{eventListings[getEventIndex()].event_name}}</h1>
+                            <h1>{{event.event_name}}</h1>
                             <i class="fa-solid fa-clock"></i>
-                            <span>{{eventListings[getEventIndex()].event_date}}</span>
+                            <span>{{event.event_date}}</span>
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>{{eventListings[getEventIndex()].event_place}}</span>
+                            <span>{{event.event_place}}</span>
                             <i class="fa-solid fa-user-check"></i>
-                            <span class="boldnum">{{getPeopleGoing(getEventIndex())}}</span><span> going </span><span class="boldnum">{{getPeopleMaybeGoing(getEventIndex())}}</span><span> maybe going </span>
+                            <span class="boldnum">{{event.going}}</span><span> going </span>
                             <hr>
                         </div>
                         <div class="eventdetails">
-                            <p>{{eventListings[getEventIndex()].event_desc}}</p>
+                            <p>{{event.event_desc}}</p>
                         </div>
                         <div class="eventactioncontainer">
                             <button class="response-button going">Going</button>
                             <button class="response-button notgoing">Not Going</button>
                         </div>
                         <div class="event-share-buttons">
-                            <button class="done-button">Share Event</button>
+                            <button class="done-button" onClick="toggleShare()">Share Event</button>
                             <br>
                             <button class="done-button">Link Calendar</button>
                         </div>
@@ -45,6 +45,6 @@
                 </div>
             </div>
         </div>
-        <script src="events.js"></script>
+        <script src="view-event.js"></script>
     </body>
 </html>
