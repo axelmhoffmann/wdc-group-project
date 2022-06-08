@@ -10,6 +10,7 @@ function googleSignIn(googleUser)
         if (this.readyState == 4 && this.status == 200)
         {
             console.log("login successful");
+            window.location.replace("events.html");
         }
         else if (this.readyState == 4 && this.status >= 400)
         {
@@ -19,7 +20,7 @@ function googleSignIn(googleUser)
 
     xhttp.open("POST", "/login")
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.sent(JSON.stringify({
+    xhttp.send(JSON.stringify({
         token: gtoken
     }));
 }

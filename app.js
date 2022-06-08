@@ -22,9 +22,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-const {OAuth2Client} = require('google-auth-library');
-const client = new OAuth2Client('609304362450-1tfan4m8cutuq818jb9573dggaoglnbr.apps.googleusercontent.com');
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

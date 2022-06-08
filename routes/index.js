@@ -1,6 +1,9 @@
 var express = require('express');
 var bcrypt = require('bcrypt');
 var router = express.Router();
+const {OAuth2Client} = require('google-auth-library');
+
+const client = new OAuth2Client('370599606648-6j68k3a9j3llq2nefq0657j93b01kllr.apps.googleusercontent.com');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,6 +19,12 @@ router.post('/login', function(req, res, next)
         if (error) {
           console.log(error);
           res.sendStatus(500);
+          return;
+        }
+
+        // empty password should login through google or use direct responses
+        if (!req.body.user || !req.body.password) {
+          res.sendStatus(400);
           return;
         }
 
@@ -52,11 +61,12 @@ router.post('/login', function(req, res, next)
         {
           const ticket = await client.verifyIdToken({
               idToken: token,
-              audience: '609304362450-1tfan4m8cutuq818jb9573dggaoglnbr.apps.googleusercontent.com',
+              audience: '370599606648-6j68k3a9j3llq2nefq0657j93b01kllr.apps.googleusercontent.com',
           });
           const payload = ticket.getPayload();
           const userid = payload['sub'];
           email = payload['email'];
+          console.log(userid + ", " + email);
         }
 
         verify().then(function()
@@ -70,17 +80,39 @@ router.post('/login', function(req, res, next)
 
                 let query = "SELECT * FROM user WHERE email = ?;";
                 connection.query(query, [email], function(error, rows, fields) {
-                connection.release();
                 if (error) {
                     console.log(error);
                     res.sendStatus(500);
                     return;
                 }
                 if (rows.length > 0) {
+                    connection.release();
                     req.session.user = rows[0];
                     res.sendStatus(200);
                 } else {
-                    res.sendStatus(401);
+                  query = "INSERT INTO user (email) VALUES (?);";
+                  connection.query(query, [email], function(error, rows, fields) {
+                    if (error) {
+                      console.log(error);
+                      res.sendStatus(500);
+                      return;
+                    }
+                    let query = "SELECT * FROM user WHERE email = ?;";
+                    connection.query(query, [email], function(error, rows, fields) {
+                        connection.release();
+                        if (error) {
+                            console.log(error);
+                            res.sendStatus(500);
+                            return;
+                        }
+                        if (rows.length > 0) {
+                            req.session.user = rows[0];
+                            res.sendStatus(200);
+                        } else {
+                            res.sendStatus(401);
+                        }
+                    });
+                  });
                 }
                 });
             });
@@ -94,6 +126,10 @@ router.post('/login', function(req, res, next)
 
 router.post('/signup', function(req, res, next)
 {
+  if (!req.body.user || !req.body.password) {
+    res.sendStatus(400);
+    return;
+  }
   if ('email' in req.body && 'password' in req.body) {
     req.pool.getConnection(async function(error,connection) {
       if (error) {
