@@ -4,8 +4,27 @@ function getProfile()
     var name = 'Quandale Dingle';
     var email = 'quandingle@dingletonhigh.com';
 
-    document.getElementById("user-name").value = name;
-    document.getElementById("user-email").value = email;
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function ()
+    {
+        var response = JSON.parse(this.responseText);
+        if (this.readyState == 4 && this.status == 200)
+        {
+            document.getElementById("user-name").value = response.name;
+            document.getElementById("user-email").value = response.email;
+        }
+        else if (this.readyState == 4 && this.status >= 400)
+        {
+            console.log("update failed");
+        }
+    };
+
+    xhttp.open("GET", "/users/update")
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+
+
 }
 
 function updateProfile()
