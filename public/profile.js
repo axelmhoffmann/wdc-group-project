@@ -4,9 +4,10 @@ function getProfile()
 
     xhttp.onreadystatechange = function ()
     {
-        var response = JSON.parse(this.responseText);
+
         if (this.readyState == 4 && this.status == 200)
         {
+            var response = JSON.parse(this.responseText);
             document.getElementById("user-name").value = response.name;
             document.getElementById("user-email").value = response.email;
         }
