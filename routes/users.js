@@ -8,7 +8,19 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-router.get('/update', function(req, res, next)
+router.post('/update', function(req, res, next)
 {
-    
+    req.pool.getConnection(function(err, conn)
+    {
+        if (err)
+        {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+        var newname = req.body.name;
+        var currentPass = req.body.currentpassword;
+        var
+        var query = "UPDATE user SET ";
+    });
 });
