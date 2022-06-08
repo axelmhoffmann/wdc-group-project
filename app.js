@@ -51,11 +51,11 @@ app.post('/login', function(req, res, next)
         if (success)
         {
             // TODO: add session token and stuff
-            res.send(200);
+            res.sendStatus(200);
         }
         else
         {
-            res.send(401);
+            res.sendStatus(401);
         }
     }
     // We have a google login
