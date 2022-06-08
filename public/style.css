@@ -74,10 +74,10 @@ h2 {
     display: flex;
     margin: 50px;
     height: 300px;
+    width:710px;
     background-color: white;
     background-clip: content-box;
     border-radius: 25px;
-    min-width:710px;
 }
 
 .eventcontent {
