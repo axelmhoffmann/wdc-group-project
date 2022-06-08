@@ -27,7 +27,7 @@ h2 {
 
 .loginbox {
     text-align: center;
-    display: flex;
+    display: block;
     width: 400px;
     height: auto;
     background-color: white;
@@ -45,14 +45,16 @@ h2 {
 }
 
 .loginbutton {
+    font-family: Azeret Mono;
 	background-color: lightgrey;
-	width: 97px;
-    padding: 8px 15px 6px 15px;
+	width: 112px;
+    padding: 5px;
     border: 2px solid #00000000;
     border-radius: 30px;
-    margin: 6px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    margin-top: 5px;
 }
+
 
 .loginbutton:hover {
     background-color: orange;
