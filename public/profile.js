@@ -11,7 +11,6 @@ function getProfile()
 function updateProfile()
 {
     var username = document.getElementById("user-name").value;
-    var currentpassword = document.getElementById("user-password").value;
     var newemail = document.getElementById("user-email").value;
     var newpassword = document.getElementById("new-password").value;
 
@@ -36,7 +35,6 @@ function updateProfile()
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({
         name: username,
-        currentpassword: currentpassword,
         newemail: newemail,
         newpassword: newpassword
     }));

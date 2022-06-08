@@ -19,8 +19,8 @@ router.post('/update', function(req, res, next)
             return;
         }
         var newname = req.body.name;
-        var currentPass = req.body.currentpassword;
-        var
+        var newemail = req.body.email;
+        var newpassword = req.body.newpassword
         var query = "UPDATE user SET ";
     });
 });
