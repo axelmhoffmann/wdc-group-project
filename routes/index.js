@@ -2,7 +2,7 @@ var express = require('express');
 var bcrypt = require('bcrypt');
 var router = express.Router();
 const {OAuth2Client} = require('google-auth-library');
-
+var nodemailer = require('nodemailer');
 const client = new OAuth2Client('370599606648-6j68k3a9j3llq2nefq0657j93b01kllr.apps.googleusercontent.com');
 
 /* GET home page. */
@@ -336,6 +336,25 @@ router.post('/eventresponse', function(req, res) {
         });
     });
   }
+});
+
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.ethereal.email',
+  port: 587,
+  auth: {
+      user: 'lionel.pollich37@ethereal.email',
+      pass: '79ARPdab8CssFEQsUv'
+  }
+});
+
+router.post('/email', function(req,res,next){
+  let info = transporter.sendMail({
+    from: 'lionel.pollich37@ethereal.email',
+    to: 'suyashkhanna112@gmail.com',
+    subject: "PARTY TIME",
+    text: "COME TO PART PLEASE",
+  })
 });
 
 module.exports = router;
