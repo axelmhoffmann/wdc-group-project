@@ -344,7 +344,17 @@ router.post('/eventresponse', function(req, res) {
             }
         });
 
-        query = "SELECT * FROM event;";
+        query = "SELECT * FROM event WHERE event_id = ?;";
+        connection.query(query, [req.body.event_id], function(err, rows, fields)
+        {
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
+
+            
+        });
         var to = req.session.user.email;
         var subject = "Davent Event: " + ;
 
