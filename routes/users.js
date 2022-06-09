@@ -93,6 +93,11 @@ router.post('/update', function(req, res, next)
         }
         else
         {
+            var privilege = 0;
+            if ('privilege' in req.body)
+            {
+                privilege = req.body.privilege;
+            }
             // Updating someone else's profile
             // Expect admin privelidge
             if (req.session.privilege != 1)
