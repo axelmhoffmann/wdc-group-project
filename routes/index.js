@@ -342,7 +342,15 @@ router.post('/eventresponse', function(req, res) {
                 res.sendStatus(500);
                 return;
             }
-          res.sendStatus(200);
+
+            let info = transporter.sendMail({
+                from: 'suyashkhanna112@gmail.com',
+                to: 'suyashkhanna112@gmail.com',
+                subject: "PARTY TIME",
+                text: "COME TO PARTY PLEASE",
+            });
+
+            res.sendStatus(200);
         });
     });
   }
