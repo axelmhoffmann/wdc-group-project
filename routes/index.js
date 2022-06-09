@@ -240,6 +240,43 @@ router.get('/event', function(req, res, next) {
   }
 });
 
+router.post('/event/delete', function(req,res)
+{
+  if(!('event_id' in req.query))
+  {
+    res.sendStatus(400);
+    return;
+  }
+
+  if(req.session.user.privelege  < 1)
+  {
+    res.sendStatus(403);
+    return;
+  }
+
+  req.pool.getConnection(function(err, connection) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+      return;
+    }
+
+    let event_id = req.query.event_id;
+
+    var query = 'DELETE FROM event WHERE event_id = ?;'
+    connection.query(query, [event_id], function(err) {
+      connection.release();
+      if (err) {
+          res.sendStatus(500);
+          return;
+      }
+      res.sendStatus(200);
+      return;
+    });
+  });
+
+});
+
 var image = "placeholder.jpg";
 
 router.post('/events', function(req, res) {
