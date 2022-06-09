@@ -81,7 +81,11 @@ xhttp.onreadystatechange = function ()
     }
 };
 
-
+if (privelege > 0)
+{
+  var target = document.getElementById('sharebuttons');
+  target.appen
+}
 
 xhttp.open("GET", "/loggedin");
 xhttp.send();
