@@ -118,6 +118,7 @@ router.post('/update', function(req, res, next)
             var targetID = req.body.targetid;
 
             var query = "UPDATE user SET email = ?, first_name = ?, last_name = ?, privilege = ?, password = ? WHERE user_id = ?;";
+            
             connection.query(query, [newemail, names[0], names[1], privilege, newpassword, targetID]);
         }
 
