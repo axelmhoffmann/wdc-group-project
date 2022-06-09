@@ -81,7 +81,7 @@ xhttp.onreadystatechange = function ()
         if (privelege > 0)
         {
           var target = document.getElementById('sharebuttons');
-          target.appendChild('<button class="done-button red-button" onclick="attemptDelete()">Delete Event</button>');
+          target.append('<button class="done-button red-button" onclick="attemptDelete()">Delete Event</button>');
         }
 
       }
