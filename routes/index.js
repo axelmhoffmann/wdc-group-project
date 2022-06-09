@@ -334,24 +334,33 @@ router.post('/eventresponse', function(req, res) {
             res.sendStatus(500);
             return;
         }
+
         var query = "INSERT INTO response (event_id, user_id, response) select ?,?,? WHERE (?, ?) NOT IN (SELECT event_id, user_id FROM response);";
         connection.query(query, [req.body.event_id, req.session.user.user_id, req.body.response, req.body.event_id, req.session.user.user_id], function(err, rows, fields) {
-            connection.release();
             if (err) {
                 console.log(err);
                 res.sendStatus(500);
                 return;
             }
-
-            let info = transporter.sendMail({
-                from: 'suyashkhanna112@gmail.com',
-                to: 'suyashkhanna112@gmail.com',
-                subject: "PARTY TIME",
-                text: "COME TO PARTY PLEASE",
-            });
-
-            res.sendStatus(200);
         });
+
+        query = "SELECT user.email, user.first_name, event.event_name FROM event INNER JOIN user ON event.event_id;";
+        connection.query(query, [req.body.event_id, req.session.user.user_id, req.body.response, req.body.event_id, req.session.user.user_id], function(err, rows, fields) {
+          if (err) {
+              console.log(err);
+              res.sendStatus(500);
+              return;
+          }
+      });
+        let info = transporter.sendMail({
+            from: 'helpmeplease@davent.com',
+            to: 'suyashkhanna112@gmail.com',
+            subject: "Davent Event: ",
+            text: "COME TO PARTY PLEASE",
+        });
+
+        connection.release();
+        res.sendStatus(200);
     });
   }
 });
