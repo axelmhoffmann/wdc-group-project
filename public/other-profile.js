@@ -60,19 +60,4 @@ function updateProfile()
         targetid: targetID()
     }));
 }
-
-var app = new Vue({
-    el:'#app',
-    data:{
-        user: {}
-    },
-    methods:{
-        getUser: function()
-        {
-
-
-
-        }
-    }
-});
 getProfile();
