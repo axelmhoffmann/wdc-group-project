@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://kit.fontawesome.com/887b4d11ec.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Azeret+Mono">
+        <script src="loader.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>Davent Profile</title>
+    </head>
+    <body>
+        <div id="navbar"></div>
+        <div id="app" class="app">
+            <div id="content" class="content">
+                <div class="white-box event-creation-box">
+                    <div id="event-image" onclick="" class="inline">
+                        <img src="exampleeventphoto.png" class="profile-picture" alt="Profile Picture" />
+                    </div>
+
+                    <div id="user-details" class="inline top-align details large-details">
+                        <input id="user-name" type="text" placeholder="Username Here" class="left"/>
+                        <br/>
+                        <hr/>
+                        <br />
+
+                        <input id="user-email" type="text" class="wide-input" placeholder="New email..."/>
+                        <br />
+
+                        <input id="new-password" type="text" placeholder="New password..."/>
+
+                        <div id="update-done" class="buttons">
+                            <button class="done-button" id="update-profile" onclick="updateProfile()">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="profile.js"></script>
+    </body>
+</html>
