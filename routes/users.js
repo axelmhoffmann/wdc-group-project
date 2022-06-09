@@ -37,6 +37,11 @@ router.get('/other', function(req, res)
         return;
     }
     if (!('id' in req.query))
+    {
+        res.sendStatus(400);
+        console.log("no id parameter");
+        return;
+    }
 
     req.pool.getConnection(function(err, conn)
     {
@@ -46,8 +51,19 @@ router.get('/other', function(req, res)
             res.sendStatus(500);
             return;
         }
+        var target = req.query.id;
+        var query = "SELECT email, first_name, last_name, privilege FROM user WHERE user_id = ?;";
+        connection.query(query, [target], function(err, rows, fields){
+            connection.release();
+            if (err)
+            {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
 
-        var query =
+            res.json(rows[0]);
+        });
     });
 });
 
