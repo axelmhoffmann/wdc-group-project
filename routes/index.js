@@ -267,6 +267,7 @@ router.post('/event/delete', function(req,res)
     connection.query(query, [event_id], function(err) {
       connection.release();
       if (err) {
+          console.log(err);
           res.sendStatus(500);
           return;
       }
