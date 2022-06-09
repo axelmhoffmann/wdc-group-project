@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var bcrypt = require('bcrypt');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -81,20 +82,12 @@ router.post('/update', function(req, res, next)
         var newname = req.body.name;
         var newemail = req.body.newemail;
         var newpassword = req.body.newpassword;
-<<<<<<< HEAD
-
-        let hash;
-        if (req.body.password) {
-            hash = await bcrypt.hash(newpassword, 10);
-        } else {
-            hash = '';
-        }
-
-        var names = str.split(/\s+/);
-=======
         var names = newname.split(/\s+/);
-        console.log([newemail, names[0], names[1], newpassword]);
->>>>>>> 2e2d9dc375b714c8506a0236e39686f2d2116255
+
+        var hash = '';
+        if (req.body.password) {
+            hash = bcrypt.hash(req.body.password, 10);
+        }
 
         // This request is made to target own profile
         if(!('targetid' in req.body))
@@ -102,13 +95,9 @@ router.post('/update', function(req, res, next)
             var userID = req.session.user.user_id;
 
             var query = "UPDATE user SET email = ?, first_name = ?, last_name = ?, password = ? WHERE user_id = ?;";
-<<<<<<< HEAD
-            connection.query(query, [newemail, names[0], names[1], hash, userID]);
-=======
-            connection.query(query, [newemail, names[0], names[1], newpassword, userID], function(err, result) {
+            connection.query(query, [newemail, names[0], names[1], hash, userID], function(err, result) {
                 if (err) console.log(err);
             });
->>>>>>> 2e2d9dc375b714c8506a0236e39686f2d2116255
         }
         else
         {
@@ -129,8 +118,9 @@ router.post('/update', function(req, res, next)
             var targetID = req.body.targetid;
 
             var query = "UPDATE user SET email = ?, first_name = ?, last_name = ?, privilege = ?, password = ? WHERE user_id = ?;";
-            
-            connection.query(query, [newemail, names[0], names[1], privilege, newpassword, targetID]);
+            connection.query(query, [newemail, names[0], names[1], privilege, hash, targetID], function(err, result) {
+                if (err) console.log(err);
+            });
 
         }
 
