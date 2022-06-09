@@ -1,7 +1,17 @@
 var express = require('express');
 var bcrypt = require('bcrypt');
+var nodemailer = require ('nodemailer');
 var router = express.Router();
 const {OAuth2Client} = require('google-auth-library');
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.ethereal.email',
+  port: 587,
+  auth: {
+      user: 'lionel.pollich37@ethereal.email',
+      pass: '79ARPdab8CssFEQsUv'
+  }
+});
 
 const client = new OAuth2Client('370599606648-6j68k3a9j3llq2nefq0657j93b01kllr.apps.googleusercontent.com');
 
