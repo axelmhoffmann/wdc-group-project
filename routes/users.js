@@ -43,7 +43,7 @@ router.get('/other', function(req, res)
         return;
     }
 
-    req.pool.getConnection(function(err, conn)
+    req.pool.getConnection(function(err, connection)
     {
         if (err)
         {
