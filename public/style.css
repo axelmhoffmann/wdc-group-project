@@ -290,6 +290,10 @@ input {
     text-align: left;
 }
 
+.red-button {
+    background-color: red;
+}
+
 .wide-input {
     width: 50%;
 }

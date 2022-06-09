@@ -77,18 +77,39 @@ xhttp.onreadystatechange = function ()
       if (response.val === true) {
         app.loggedin = true;
         privelege = respone.privelege;
+
+        if (privelege > 0)
+        {
+          var target = document.getElementById('sharebuttons');
+          target.appendChild('<button class="done-button red-button" onclick="attemptDelete()">Delete Event</button>');
+        }
+
       }
     }
 };
 
-if (privelege > 0)
-{
-  var target = document.getElementById('sharebuttons');
-  target.appen
-}
-
 xhttp.open("GET", "/loggedin");
 xhttp.send();
 
+
+
+
 app.getEvent();
 
+function attemptDelete()
+{
+  if (privelege == 0)
+    return;
+
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function ()
+    {
+        if (this.readyState == 4 && this.status == 200)
+        {
+          window.location.replace("events.html");
+        }
+    };
+
+    
+}
