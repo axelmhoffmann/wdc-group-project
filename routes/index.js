@@ -22,8 +22,7 @@ router.post('/login', function(req, res, next)
           return;
         }
 
-        // empty password should login through google or use direct responses
-        if (!req.body.user || !req.body.password) {
+        if (!req.body.user) {
           res.sendStatus(400);
           return;
         }
@@ -37,14 +36,21 @@ router.post('/login', function(req, res, next)
             return;
           }
           if (rows.length > 0) {
-            bcrypt.compare(req.body.password, rows[0].password).then(function(result) {
-              if (result) {
+            if (rows[0].password === null) {
+                res.sendStatus(401);
+            } else if (rows[0].password === '') {
                 req.session.user = rows[0];
                 res.sendStatus(200);
-              } else {
-                res.sendStatus(401);
-              }
-            });
+            } else {
+                bcrypt.compare(req.body.password, rows[0].password).then(function(result) {
+                if (result) {
+                    req.session.user = rows[0];
+                    res.sendStatus(200);
+                } else {
+                    res.sendStatus(401);
+                }
+                });
+            }
           } else {
             res.sendStatus(401);
           }
@@ -93,22 +99,10 @@ router.post('/login', function(req, res, next)
                     req.session.user = rows[0];
                     res.sendStatus(200);
                 } else {
-                  query = "INSERT INTO user (email, first_name, last_name, password) VALUES (?, ?, ?, '');";
+                  query = "INSERT INTO user (email, first_name, last_name) VALUES (?, ?, ?);";
                   connection.query(query, [email, first_name, last_name], function(error, rows, fields) {
                     if (error) {
                       console.log(error);
-
-function hideShare()
-{
-    var overlay = $("#share-overlay")[0];
-    overlay.style.display = "none";
-}
-
-function hideShare()
-{
-    var overlay = $("#share-overlay")[0];
-    overlay.style.display = "none";
-}
                       res.sendStatus(500);
                       return;
                     }
@@ -141,7 +135,7 @@ function hideShare()
 
 router.post('/signup', function(req, res, next)
 {
-  if (!req.body.email || !req.body.password) {
+  if (!req.body.email) {
     res.sendStatus(400);
     return;
   }
@@ -153,7 +147,12 @@ router.post('/signup', function(req, res, next)
         return;
       }
 
-      const hash = await bcrypt.hash(req.body.password, 10);
+      let hash;
+      if (req.body.password) {
+        hash = await bcrypt.hash(req.body.password, 10);
+      } else {
+        hash = '';
+      }
 
       let query = "INSERT INTO user (first_name, last_name, email, password, privilege) VALUES (?, ?, ?, ?, 0);";
       connection.query(query, [req.body.first_name, req.body.last_name, req.body.email, hash], function(error, rows, fields) {
@@ -171,6 +170,7 @@ router.post('/signup', function(req, res, next)
                 return;
             }
             if (rows.length > 0) {
+                req.session.user = rows[0];
                 res.sendStatus(200);
             } else {
                 console.log(error);
@@ -218,7 +218,7 @@ router.get('/event', function(req, res, next) {
 
         var query = "SELECT image, event_name, event_desc, event_place, event_date FROM event where event_id = ?";
         connection.query(query, [event_id], function(err, rows, fields) {
-            if (err) {
+          if (err || rows.length < 1) {
                 res.sendStatus(500);
                 return;
             }
@@ -243,6 +243,10 @@ router.get('/event', function(req, res, next) {
 var image = "placeholder.jpg";
 
 router.post('/events', function(req, res) {
+  if (!req.session.user) {
+    res.sendStatus(403);
+    return;
+  }
     req.pool.getConnection( function(err, connection) {
         if (err) {
             console.log(err);
@@ -266,6 +270,32 @@ router.get('/loggedin', function(req, res, next) {
     res.json(true);
   } else {
     res.json(false);
+  }
+});
+
+router.post('/eventresponse', function(req, res) {
+  if (!req.session.user) {
+    res.sendStatus(403);
+    return;
+  }
+  if ('event_id' in req.body && 'response' in req.body) {
+    req.pool.getConnection( function(err, connection) {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+        var query = "INSERT INTO response (event_id, user_id, response) select ?,?,? WHERE (?, ?) NOT IN (SELECT event_id, user_id FROM response);";
+        connection.query(query, [req.body.event_id, req.session.user.user_id, req.body.response, req.body.event_id, req.session.user.user_id], function(err, rows, fields) {
+            connection.release();
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
+          res.sendStatus(200);
+        });
+    });
   }
 });
 

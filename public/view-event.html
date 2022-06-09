@@ -33,8 +33,8 @@
                             <p>{{event.event_desc}}</p>
                         </div>
                         <div class="eventactioncontainer">
-                            <button class="response-button going">Going</button>
-                            <button class="response-button notgoing">Not Going</button>
+                            <button class="response-button going" v-on:click="respond(true)">Going</button>
+                            <button class="response-button notgoing" v-on:click="respond(false)">Not Going</button>
                         </div>
                         <div class="event-share-buttons">
                             <button class="done-button" onClick="toggleShare()">Share Event</button>
