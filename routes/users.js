@@ -1,6 +1,6 @@
 var express = require('express');
-var router = express.Router();
 var bcrypt = require('bcrypt');
+var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -84,9 +84,11 @@ router.post('/update', function(req, res, next)
         var newpassword = req.body.newpassword;
         var names = newname.split(/\s+/);
 
-        var hash = '';
-        if (req.body.password) {
-            hash = await bcrypt.hash(req.body.password, 10);
+        let hash; 
+        if (req.body.newpassword) {
+          hash = await bcrypt.hash(req.body.newpassword, 10);
+        } else {
+          hash = '';
         }
 
         // This request is made to target own profile
