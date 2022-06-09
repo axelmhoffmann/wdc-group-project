@@ -61,7 +61,7 @@ router.get('/other', function(req, res)
                 res.sendStatus(500);
                 return;
             }
-
+            console.log(req.query.id);
             res.json(rows[0]);
         });
     });
@@ -69,7 +69,7 @@ router.get('/other', function(req, res)
 
 router.post('/update', function(req, res, next)
 {
-    req.pool.getConnection(function(err, conn)
+    req.pool.getConnection(function(err, connection)
     {
         if (err)
         {
@@ -79,17 +79,20 @@ router.post('/update', function(req, res, next)
         }
 
         var newname = req.body.name;
-        var newemail = req.body.email;
+        var newemail = req.body.newemail;
         var newpassword = req.body.newpassword;
-        var names = str.split(/\s+/);
+        var names = newname.split(/\s+/);
+        console.log([newemail, names[0], names[1], newpassword]);
 
         // This request is made to target own profile
         if(!('targetid' in req.body))
         {
-            var userID = res.session.user.user_id;
+            var userID = req.session.user.user_id;
 
             var query = "UPDATE user SET email = ?, first_name = ?, last_name = ?, password = ? WHERE user_id = ?;";
-            connection.query(query, [newemail, names[0], names[1], newpassword, userID]);
+            connection.query(query, [newemail, names[0], names[1], newpassword, userID], function(err, result) {
+                if (err) console.log(err);
+            });
         }
         else
         {
@@ -111,6 +114,7 @@ router.post('/update', function(req, res, next)
 
             var query = "UPDATE user SET email = ?, first_name = ?, last_name = ?, privilege = ?, password = ? WHERE user_id = ?;";
             connection.query(query, [newemail, names[0], names[1], privilege, newpassword, targetID]);
+
         }
 
         connection.release();

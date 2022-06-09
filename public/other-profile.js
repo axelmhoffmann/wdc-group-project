@@ -25,7 +25,7 @@ function getProfile()
         }
     };
 
-    xhttp.open("GET", "/users/other?id=" + targetID)
+    xhttp.open("GET", "/users/other?id=" + targetID())
     xhttp.send();
 }
 
