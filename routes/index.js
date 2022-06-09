@@ -248,7 +248,7 @@ router.post('/event/delete', function(req,res)
     return;
   }
 
-  if(req.session.user.privelege  < 1)
+  if(req.session.user.privilege  < 1)
   {
     res.sendStatus(403);
     return;
