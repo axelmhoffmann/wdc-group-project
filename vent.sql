@@ -39,4 +39,5 @@ INSERT INTO event VALUES
 (1, 'happywdc.png', 'WDC Project Milestone 1 Due Date', 'You will die', 'MyUni', '2006-02-15 04:34:33'),
 (2, 'exampleeventphoto.png', 'Birthday Party', 'I will be born', 'My House (Location Undisclosed)', '2006-02-15 04:34:33'),
 (3, 'happywdc.png', 'ying stoke', 'oh yeah yooh yeah 21389325098473254', 'cps', '2006-02-15 04:34:33');
+
 COMMIT;
