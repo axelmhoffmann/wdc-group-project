@@ -34,8 +34,7 @@ function updateProfile()
     var username = document.getElementById("user-name").value;
     var newemail = document.getElementById("user-email").value;
     var newpassword = document.getElementById("new-password").value;
-
-    // TODO: Encrypt passwords
+    var privilege = document.getElementById("privilege").value;
 
     let xhttp = new XMLHttpRequest();
 
