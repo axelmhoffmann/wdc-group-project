@@ -22,6 +22,35 @@ router.get('/myprofile', function(req, res, next)
     }));
 });
 
+router.get('/other', function(req, res)
+{
+    if (!('user' in req.session))
+    {
+        res.sendStatus(403);
+        console.log("not logged in");
+        return;
+    }
+    if (req.session.user.privilege < 1)
+    {
+        res.sendStatus(403);
+        console.log("not an admin");
+        return;
+    }
+    if (!('id' in req.query))
+
+    req.pool.getConnection(function(err, conn)
+    {
+        if (err)
+        {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+
+        var query =
+    });
+});
+
 router.post('/update', function(req, res, next)
 {
     req.pool.getConnection(function(err, conn)
