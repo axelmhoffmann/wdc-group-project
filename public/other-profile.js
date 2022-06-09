@@ -57,6 +57,7 @@ function updateProfile()
         name: username,
         newemail: newemail,
         newpassword: newpassword,
+        privilege: privilege,
         targetid: targetID()
     }));
 }
