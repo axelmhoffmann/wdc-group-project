@@ -111,5 +111,6 @@ function attemptDelete()
         }
     };
 
-    
+    xhttp.open("POST", "/event/delete?event_id="+getEventIndex());
+    xhttp.send();
 }
