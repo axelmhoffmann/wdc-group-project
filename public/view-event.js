@@ -46,6 +46,7 @@ var app = new Vue({
 let xhttp = new XMLHttpRequest();
 
 let loggedin = false;
+let privelege = false;
 xhttp.onreadystatechange = function ()
 {
     if (this.readyState == 4 && this.status == 200)
@@ -60,3 +61,4 @@ xhttp.open("GET", "/loggedin");
 xhttp.send();
 
 app.getEvent();
+
