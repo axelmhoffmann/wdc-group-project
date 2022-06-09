@@ -1,3 +1,10 @@
+function targetID()
+{
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get('id');
+}
+
 function getProfile()
 {
     let xhttp = new XMLHttpRequest();
@@ -18,7 +25,7 @@ function getProfile()
         }
     };
 
-    xhttp.open("GET", "/users/myprofile")
+    xhttp.open("GET", "/users/other?id=" + targetID)
     xhttp.send();
 }
 
@@ -50,7 +57,7 @@ function updateProfile()
     xhttp.send(JSON.stringify({
         name: username,
         newemail: newemail,
-        newpassword: newpassword
+        newpassword: newpassword,
     }));
 }
 
@@ -62,6 +69,8 @@ var app = new Vue({
     methods:{
         getUser: function()
         {
+
+
 
         }
     }
