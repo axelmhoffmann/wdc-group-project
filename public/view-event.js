@@ -67,21 +67,21 @@ var app = new Vue({
 
 let xhttp = new XMLHttpRequest();
 
-<<<<<<< HEAD
 let loggedin = false;
-let privelege = false;
-=======
->>>>>>> bd132977abcf9c46d58692d6f27f443c3b236db1
+let privelege = 0;
 xhttp.onreadystatechange = function ()
 {
     if (this.readyState == 4 && this.status == 200)
     {
-      if (JSON.parse(this.responseText).val === true) {
+      var response = JSON.parse(this.responseText);
+      if (response.val === true) {
         app.loggedin = true;
-        privelege
+        privelege = respone.privelege;
       }
     }
 };
+
+
 
 xhttp.open("GET", "/loggedin");
 xhttp.send();
