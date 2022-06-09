@@ -81,6 +81,14 @@ router.post('/update', function(req, res, next)
         var newname = req.body.name;
         var newemail = req.body.email;
         var newpassword = req.body.newpassword;
+
+        let hash;
+        if (req.body.password) {
+            hash = await bcrypt.hash(newpassword, 10);
+        } else {
+            hash = '';
+        }
+
         var names = str.split(/\s+/);
 
         // This request is made to target own profile
@@ -89,7 +97,7 @@ router.post('/update', function(req, res, next)
             var userID = res.session.user.user_id;
 
             var query = "UPDATE user SET email = ?, first_name = ?, last_name = ?, password = ? WHERE user_id = ?;";
-            connection.query(query, [newemail, names[0], names[1], newpassword, userID]);
+            connection.query(query, [newemail, names[0], names[1], hash, userID]);
         }
         else
         {
