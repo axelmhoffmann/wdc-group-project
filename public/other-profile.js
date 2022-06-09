@@ -58,6 +58,7 @@ function updateProfile()
         name: username,
         newemail: newemail,
         newpassword: newpassword,
+        targetid: targetID()
     }));
 }
 
