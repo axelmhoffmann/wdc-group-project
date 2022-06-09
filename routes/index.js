@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   host: 'smtp.ethereal.email',
   port: 587,
   auth: {
-      user: 'lionel.pollich37@ethereal.email',
-      pass: '79ARPdab8CssFEQsUv'
+      user: 'prudence.heller14@ethereal.email',
+      pass: 'NQ9kQ46rBk8cbHS9BE'
   }
 });
 
@@ -355,7 +355,7 @@ router.post('/eventresponse', function(req, res) {
 
             var to = req.session.user.email;
             var subject = "Davent Event: " + rows[0].event_name;
-            var text = "You signed up for the " + rows[0].event_name " event on DaVent!";
+            var text = "You signed up for the " + rows[0].event_name + " event on DaVent!";
 
             let info = transporter.sendMail({
                 from: 'helpmeplease@davent.com',
