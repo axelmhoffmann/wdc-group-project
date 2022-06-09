@@ -307,8 +307,8 @@ router.get('/loggedin', function(req, res, next){
   var priv = 0;
   if ('user' in req.session)
     val = true;
-    priv = req.session.user.privelege;
-  res.json({val: val, privelege: priv});
+    priv = req.session.user.privilege;
+  res.json({val: val, privilege: priv});
 });
 
 router.post('/eventresponse', function(req, res) {

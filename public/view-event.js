@@ -76,7 +76,7 @@ xhttp.onreadystatechange = function ()
       var response = JSON.parse(this.responseText);
       if (response.val === true) {
         app.loggedin = true;
-        privelege = response.privelege;
+        privelege = response.privilege;
 
         if (privelege > 0)
         {
