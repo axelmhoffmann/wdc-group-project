@@ -344,14 +344,10 @@ router.post('/eventresponse', function(req, res) {
             }
         });
 
-        query = "SELECT user.email, user.first_name, event.event_name FROM event INNER JOIN user ON event.event_id;";
-        connection.query(query, [req.body.event_id, req.session.user.user_id, req.body.response, req.body.event_id, req.session.user.user_id], function(err, rows, fields) {
-          if (err) {
-              console.log(err);
-              res.sendStatus(500);
-              return;
-          }
-      });
+        query = "SELECT * FROM event;";
+        var to = req.session.user.email;
+        var subject = "Davent Event: " + ;
+
         let info = transporter.sendMail({
             from: 'helpmeplease@davent.com',
             to: 'suyashkhanna112@gmail.com',
