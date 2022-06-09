@@ -70,13 +70,7 @@ router.get('/other', function(req, res)
 
 router.post('/update', function(req, res, next)
 {
-    var newpassword = req.body.newpassword;
-    var hash = '';
-    if (req.body.password) {
-        hash = await bcrypt.hash(req.body.password, 10);
-    }
-
-    req.pool.getConnection(function(err, connection)
+    req.pool.getConnection(async function(err, connection)
     {
         if (err)
         {
@@ -87,7 +81,13 @@ router.post('/update', function(req, res, next)
 
         var newname = req.body.name;
         var newemail = req.body.newemail;
+        var newpassword = req.body.newpassword;
         var names = newname.split(/\s+/);
+
+        var hash = '';
+        if (req.body.password) {
+            hash = await bcrypt.hash(req.body.password, 10);
+        }
 
         // This request is made to target own profile
         if(!('targetid' in req.body))
