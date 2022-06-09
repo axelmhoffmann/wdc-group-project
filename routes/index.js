@@ -193,7 +193,7 @@ router.get('/events', function(req, res, next) {
             res.sendStatus(500);
             return;
         }
-        var query = "SELECT image, event_name, event_desc, event_place, event_date FROM event";
+        var query = "SELECT event_id, image, event_name, event_desc, event_place, event_date FROM event";
         connection.query(query, function(err, rows, fields) {
             connection.release();
             if (err) {
