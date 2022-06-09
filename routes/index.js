@@ -354,16 +354,18 @@ router.post('/eventresponse', function(req, res) {
             }
 
             
-        });
-        var to = req.session.user.email;
-        var subject = "Davent Event: " + ;
 
-        let info = transporter.sendMail({
-            from: 'helpmeplease@davent.com',
-            to: 'suyashkhanna112@gmail.com',
-            subject: "Davent Event: ",
-            text: "COME TO PARTY PLEASE",
+            var to = req.session.user.email;
+            var subject = "Davent Event: " + ;
+
+            let info = transporter.sendMail({
+                from: 'helpmeplease@davent.com',
+                to: 'suyashkhanna112@gmail.com',
+                subject: "Davent Event: ",
+                text: "COME TO PARTY PLEASE",
+            });
         });
+
 
         connection.release();
         res.sendStatus(200);
