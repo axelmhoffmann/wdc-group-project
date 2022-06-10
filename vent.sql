@@ -78,3 +78,16 @@ INSERT INTO response (event_id, user_id, response) select ?,?,? WHERE (?, ?) NOT
 Get user's email to send an invite to event
 SELECT email FROM user WHERE user_id = ?;
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
