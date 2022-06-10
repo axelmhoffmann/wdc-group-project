@@ -26,7 +26,7 @@ router.get('/public', function(req, res)
             res.sendStatus(500);
             return;
         }
-        var query = "SELECT user_id, first_name, last_name FROM user";
+        var query = "SELECT user_id, first_name, last_name FROM user;";
         connection.query(query, [], function(err, rows, fields){
             connection.release();
             if (err)

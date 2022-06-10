@@ -48,6 +48,30 @@ QUERIES USED:
 Find user for login
 SELECT * FROM user WHERE email = ?;
 
+Signup user with normal login
+INSERT INTO user (first_name, last_name, email, password, privilege) VALUES (?, ?, ?, ?, 0);
+
+Signup user with google login
+INSERT INTO user (email, first_name, last_name) VALUES (?, ?, ?);
+
+Get public event listings
+SELECT event_id, image, event_name, event_desc, event_place, event_date FROM event;
+
+Get single event data
+SELECT image, event_name, event_desc, event_place, event_date FROM event where event_id = ?;
+
+Count people that responded going to an event
+SELECT COUNT(*) count from response where event_id = ? and response = true;
+
+Admin delete an event
+DELETE FROM event WHERE event_id = ?;
+
+Post new event
+INSERT INTO event(image, event_name, event_date, event_desc, event_place) VALUES(?, ?, ?, ?, ?);
+
+Admin update user/user update self
+UPDATE user SET email = ?, first_name = ?, last_name = ?, password = ? WHERE user_id = ?;
+
 
 
 */
