@@ -1,11 +1,14 @@
 function googleSignIn(googleUser)
+
 {
+    
     var profile = googleUser.getBasicProfile();
     var gtoken = googleUser.getAuthResponse().id_token;
 
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function ()
+    
     {
         if (this.readyState == 4 && this.status == 200)
         {
@@ -16,22 +19,34 @@ function googleSignIn(googleUser)
         {
             console.log("login failed");
         }
+        
     };
+    
+    
 
     xhttp.open("POST", "/login")
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({
         token: gtoken
+        
     }));
+    
+    
 }
+
+
+
 
 function login()
 {
     var email = document.getElementById("email").value;
     var pword = document.getElementById("password").value;
+    
 
     let xhttp = new XMLHttpRequest();
 
+    
+    
     xhttp.onreadystatechange = function ()
     {
         if (this.readyState == 4 && this.status == 200)
@@ -53,14 +68,20 @@ function login()
     }));
 }
 
+
+
 function signup()
 {
     var fname = document.getElementById("first_name").value;
     var lname = document.getElementById("last_name").value;
     var email = document.getElementById("email").value;
     var pword = document.getElementById("password").value;
+    
+    
 
     let xhttp = new XMLHttpRequest();
+    
+    
 
     xhttp.onreadystatechange = function ()
     {
@@ -74,6 +95,8 @@ function signup()
             console.log("login failed");
         }
     };
+    
+    
 
     xhttp.open("POST", "/signup")
     xhttp.setRequestHeader("Content-type", "application/json");
@@ -84,3 +107,16 @@ function signup()
         password: pword
     }));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
