@@ -19,12 +19,26 @@ function hideShare()
 var app = new Vue({
     el: '#app',
     data: {
-      users: [
-        { name: 'Homer Simpson', image: 'images/homer.png' },
-        { name: 'Marge Simpson', image: 'images/marge.png' },
-        { name: 'Glenn Quagmire', image: 'images/quagmire.png' },
-        { name: 'McLovin', image: 'images/mclovin.png' }
-      ]
+      users: []
+    },
+    methods: {
+      getUsers: function()
+      {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "/users/public");
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200)
+          {
+            app.users = JSON.parse(this.responseText);
+            console.log(app.eventListings);
+          }
+          else if (this.status == 403)
+          {
+               window.location.replace("login.html");
+          }
+        };
+        xhttp.send();
+      }
     }
 });
 
