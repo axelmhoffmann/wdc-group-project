@@ -9,6 +9,37 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
+router.get('/public', function(req, res)
+{
+    if (!('user' in req.session))
+    {
+        res.sendStatus(403);
+        console.log("not logged in");
+        return;
+    }
+
+    req.pool.getConnection(function(err, connection)
+    {
+        if (err)
+        {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+        var query = "SELECT user_id, first_name, last_name FROM user";
+        connection.query(query, [], function(err, rows, fields){
+            connection.release();
+            if (err)
+            {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
+            res.json(rows[0]);
+        });
+    });
+});
+
 router.get('/myprofile', function(req, res, next)
 {
     if (!('user' in req.session))
