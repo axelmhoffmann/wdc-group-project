@@ -34,7 +34,6 @@ var app = new Vue({
   }
 
 function addEvent() {
-    console.log("fuck you");
     let name = document.getElementById("event-name").value;
     let desc = document.getElementById("event-desc").value;
     let place = document.getElementById("event-place").value;
