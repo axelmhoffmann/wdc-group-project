@@ -357,4 +357,89 @@ router.post('/email', function(req,res,next){
   })
 });
 
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.ethereal.email',
+  port: 587,
+  auth: {
+      user: 'lionel.pollich37@ethereal.email',
+      pass: '79ARPdab8CssFEQsUv'
+  }
+});
+
+router.post('/email', function(req,res,next){
+  let info = transporter.sendMail({
+    from: 'lionel.pollich37@ethereal.email',
+    to: 'suyashkhanna112@gmail.com',
+    subject: "PARTY TIME",
+    text: "COME TO PART PLEASE",
+  })
+});
+
+module.exports = router;
+
+
+
+const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
+
+const eventStartTime = new Date()
+eventStartTime.setDate(eventStartTime.getDay() + 2)
+
+
+const eventEndTime = new Date()
+eventEndTime.setDate(eventEndTime.getDay() + 4)
+eventEndTime.setMinutes(eventEndTime.getMinutes() + 45)
+
+
+const event = {
+  summary: `PARTY`,
+  location: `88 Hindley St, Adelaide SA 5000`,
+  description: `FOR SOME KFC`,
+  colorId: 1,
+  start: {
+    dateTime: eventStartTime,
+    timeZone: 'Adeliade/Australia',
+  },
+  end: {
+    dateTime: eventEndTime,
+    timeZone: 'Adeliade/Australia',
+  },
+}
+
+
+calendar.freebusy.query(
+  {
+    resource: {
+      timeMin: eventStartTime,
+      timeMax: eventEndTime,
+      timeZone: 'Adeliade/Australia',
+      items: [{ id: 'primary' }],
+    },
+  },
+  (err, res) => {
+
+    if (err) return console.error('Free Busy Query Error: ', err)
+
+  
+    const eventArr = res.data.calendars.primary.busy
+
+
+    if (eventArr.length === 0)
+
+      return calendar.events.insert(
+        { calendarId: 'primary', resource: event },
+        err => {
+
+          if (err) return console.error('Error Creating Calender Event:', err)
+
+          return console.log('Calendar event successfully created.')
+        }
+      )
+
+    return console.log(`Sorry I'm busy...`)
+  }
+)
+
+
+
 module.exports = router;
