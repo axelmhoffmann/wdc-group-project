@@ -382,7 +382,7 @@ router.post('/eventresponse', function(req, res) {
   }
 });
 
-router.get('/invite', function(req, res)
+router.post('/invite', function(req, res)
 {
   if (!req.session.user) {
     res.sendStatus(403);

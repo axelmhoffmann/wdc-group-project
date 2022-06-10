@@ -20,7 +20,7 @@
                         <div v-for="(user, index) in users" class="user-card">
                             <div class="user-icon-container"><img class="user-icon" src="images/mclovin.png"/></div>
                             <span class="user-name">{{ user.first_name + " " + user.last_name }}</span>
-                            <button class="invite-button" v-bind:onclick="inviteUser(user.user_id)"><i class="fa-solid fa-square-plus fa-2x"></i></button>
+                            <button class="invite-button" v-on:click="inviteUser(user.user_id)"><i class="fa-solid fa-square-plus fa-2x"></i></button>
                         </div>
                     </div>
                     <div class="buttons">
