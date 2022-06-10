@@ -47,8 +47,9 @@ function getEventIndex() {
 function makeUrl(event)
 {
   console.log(app.event.event_name);
-  console.log(app.event.event_date);
   console.log(app.event.event_place);
+  var time = app.event.event_date.replace(/[-.:]/g,'');
+  console.log(time);
   var result = "http://www.google.com/calendar/render?action=TEMPLATE&text=" + app.event.event_name + "&dates=[start-custom format='Ymd\THi00\Z']/[end-custom format='Ymd\THi00\Z']&details=[description]&location=[location]&trp=false&sprop=&sprop=name:"
   return result;
 }
