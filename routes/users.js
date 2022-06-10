@@ -84,7 +84,7 @@ router.post('/update', function(req, res, next)
         var newpassword = req.body.newpassword;
         var names = newname.split(/\s+/);
 
-        let hash; 
+        let hash;
         if (req.body.newpassword) {
           hash = await bcrypt.hash(req.body.newpassword, 10);
         } else {

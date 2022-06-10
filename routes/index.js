@@ -382,4 +382,10 @@ router.post('/eventresponse', function(req, res) {
   }
 });
 
+router.get('/invite', function(req, res)
+{
+
+});
+
+
 module.exports = router;
