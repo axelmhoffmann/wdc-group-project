@@ -384,7 +384,37 @@ router.post('/eventresponse', function(req, res) {
 
 router.get('/invite', function(req, res)
 {
+  if (!req.session.user) {
+    res.sendStatus(403);
+    return;
+  }
+  if ('user_id' in req.body) {
+    req.pool.getConnection( function(err, connection) {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
 
+        var query = "SELECT email FROM user WHERE user_id = ?";
+        connection.query(query, [req.body.user_id], function(err, rows, fields) {
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
+            var subject = req.session.user.first_name + " invited you to an event!";
+            var text = "Visit DaVent to see "
+            let info = transporter.sendMail({
+              from: req.session.user.email,
+              to: rows[0].email,
+              subject: subject,
+              text: text
+            });
+
+        });
+      });
+    }
 });
 
 
