@@ -72,6 +72,9 @@ INSERT INTO event(image, event_name, event_date, event_desc, event_place) VALUES
 Admin update user/user update self
 UPDATE user SET email = ?, first_name = ?, last_name = ?, password = ? WHERE user_id = ?;
 
+User responds to an event
+INSERT INTO response (event_id, user_id, response) select ?,?,? WHERE (?, ?) NOT IN (SELECT event_id, user_id FROM response);
 
-
+Get user's email to send an invite to event
+SELECT email FROM user WHERE user_id = ?;
 */
