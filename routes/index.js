@@ -4,6 +4,21 @@ var router = express.Router();
 const {OAuth2Client} = require('google-auth-library');
 var nodemailer = require('nodemailer');
 const client = new OAuth2Client('370599606648-6j68k3a9j3llq2nefq0657j93b01kllr.apps.googleusercontent.com');
+// Require oAuth2 from our google instance.
+const { OAuth2 } = google.auth
+
+// Create a new instance of oAuth and set our Client ID & Client Secret.
+const oAuth2Client = new OAuth2(
+  '782745655093-c8n4l0urb98rm11255kt5a7t18bkljhc.apps.googleusercontent.com',
+  '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'
+)
+
+// Call the setCredentials method on our oAuth2Client instance and set our refresh token.
+oAuth2Client.setCredentials({
+  refresh_token: '1//043MqjEArApJQCgYIARAAGAQSNwF-L9Ird6xHq_ivfP6N-kVE4VpOOVVY-bRqbli48rm_kjUJScGSXUbOhcNXi4TQ29QzPaO5f_Q',
+})
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
