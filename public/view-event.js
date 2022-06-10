@@ -44,13 +44,16 @@ function getEventIndex() {
   return Number(urlParams.get('i'));
 }
 
-function makeUrl(event)
+function makeUrl()
 {
   console.log(app.event.event_name);
   console.log(app.event.event_place);
-  var time = app.event.event_date.replace(/[-.:]/g,'');
-  console.log(time);
-  var result = "http://www.google.com/calendar/render?action=TEMPLATE&text=" + app.event.event_name + "&dates=[start-custom format='Ymd\THi00\Z']/[end-custom format='Ymd\THi00\Z']&details=[description]&location=[location]&trp=false&sprop=&sprop=name:"
+  var endTime = new Date(app.event.event_date);
+  endTime = new Date(endTime.getTime() + 60 *60000);
+  var start = app.event.event_date.replace(/[-.:]/g,'');
+  var end = endTime.toISOString().replace(/[-.:]/g,'');
+  console.log(start);
+  var result = "http://www.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent(app.event.event_name) + "&dates=" + start + "/" + end + "&details="+encodeURIComponent(app.event.event_desc)+"&location="+encodeURIComponent(app.event.event_place)+"&trp=false&sprop=&sprop=name:"
   return result;
 }
 
@@ -69,7 +72,7 @@ var app = new Vue({
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                   app.event = JSON.parse(this.responseText);
-                  url = makeUrl(event);
+                  app.url = makeUrl();
                 }
             };
           xhttp.send();
