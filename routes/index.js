@@ -357,6 +357,16 @@ router.post('/eventresponse', function(req, res) {
             var subject = "Davent Event: " + rows[0].event_name;
             var text = "You signed up for the " + rows[0].event_name + " event on DaVent!";
 
+            if ('notifictaions' in req.session.user)
+            {
+              if (!req.session.user.notifications)
+              {
+                connection.release();
+                res.sendStatus(200);
+                return;
+              }
+            }
+
             let info = transporter.sendMail({
                 from: 'helpmeplease@davent.com',
                 to: to,
