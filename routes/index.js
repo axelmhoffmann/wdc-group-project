@@ -109,7 +109,7 @@ router.post('/login', function(req, res, next)
                     req.session.user = rows[0];
                     res.sendStatus(200);
                 } else {
-                  query = "INSERT INTO user (email, first_name, last_name) VALUES (?, ?, ?);";
+                  query = "INSERT INTO user (email, first_name, last_name, privilege) VALUES (?, ?, ?, 0);";
                   connection.query(query, [email, first_name, last_name], function(error, rows, fields) {
                     if (error) {
                       console.log(error);
