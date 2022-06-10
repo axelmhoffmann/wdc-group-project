@@ -44,10 +44,16 @@ function getEventIndex() {
   return Number(urlParams.get('i'));
 }
 
+function makeUrl()
+{
+  
+}
+
 var app = new Vue({
     el: '#app',
     data: {
       event: {},
+      url: "",
       loggedin: false,
     },
     methods: {
@@ -58,6 +64,7 @@ var app = new Vue({
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                   app.event = JSON.parse(this.responseText);
+                  url = makeUrl(event);
                 }
             };
           xhttp.send();

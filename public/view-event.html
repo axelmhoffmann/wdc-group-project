@@ -39,12 +39,12 @@
                         <div class="event-share-buttons" id="sharebuttons">
                             <button class="done-button" onClick="share()">Share Event</button>
                             <br>
-                            <a v-bind:href="http://www.google.com/calendar/render?
+                            <a href="http://www.google.com/calendar/render?
                                 action=TEMPLATE
-                                &text=event.event_name
+                                &text=[event-title]
                                 &dates=[start-custom format='Ymd\THi00\Z']/[end-custom format='Ymd\THi00\Z']
-                                &details=event.event_desc
-                                &location=event.event_place
+                                &details=[description]
+                                &location=[location]
                                 &trp=false
                                 &sprop=
                                 &sprop=name:"
