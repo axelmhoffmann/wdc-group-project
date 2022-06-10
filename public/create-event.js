@@ -42,6 +42,8 @@ var app = new Vue({
     }
 });
 
+app.getUsers();
+
   function inviteUser(userID)
   {
     var xhttp = new XMLHttpRequest();
