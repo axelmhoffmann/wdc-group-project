@@ -404,7 +404,7 @@ router.get('/invite', function(req, res)
                 return;
             }
             var subject = req.session.user.first_name + " invited you to an event!";
-            var text = "Visit DaVent to see "
+            var text = "Visit DaVent to see what they've come up with!";
             let info = transporter.sendMail({
               from: req.session.user.email,
               to: rows[0].email,
