@@ -39,7 +39,7 @@
                         <div class="event-share-buttons" id="sharebuttons">
                             <button class="done-button" onClick="share()">Share Event</button>
                             <br>
-                            <a v-bind:href="url" target="_blank" rel="nofollow"><button class="done-button">Link Calendar</button></a>
+                            <a :href="url" target="_blank" rel="nofollow"><button class="done-button">Link Calendar</button></a>
                             <br />
                             <button id="delbutton" class="done-button red-button" onclick="attemptDelete()" style="display:none;">Delete Event</button>
                         </div>
