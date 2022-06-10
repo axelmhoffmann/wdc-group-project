@@ -30,11 +30,11 @@ var app = new Vue({
           if (this.readyState == 4 && this.status == 200)
           {
             app.users = JSON.parse(this.responseText);
-            console.log(app.eventListings);
+            console.log(app.users);
           }
           else if (this.status == 403)
           {
-               window.location.replace("login.html");
+            window.location.replace("login.html");
           }
         };
         xhttp.send();
@@ -42,9 +42,18 @@ var app = new Vue({
     }
 });
 
-  function inviteUser(index)
+  function inviteUser(userID)
   {
-
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/invite");
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.onreadystatechange = function() {
+      if (this.status >= 400)
+      {
+        console.log("error inviting user");
+      }
+    };
+    xhttp.send(JSON.stringify({user_id:userID}));
   }
 
 function addEvent() {
