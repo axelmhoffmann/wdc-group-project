@@ -44,9 +44,13 @@ function getEventIndex() {
   return Number(urlParams.get('i'));
 }
 
-function makeUrl()
+function makeUrl(event)
 {
-  
+  console.log(app.event.event_name);
+  console.log(app.event.event_date);
+  console.log(app.event.event_place);
+  var result = "http://www.google.com/calendar/render?action=TEMPLATE&text=" + app.event.event_name + "&dates=[start-custom format='Ymd\THi00\Z']/[end-custom format='Ymd\THi00\Z']&details=[description]&location=[location]&trp=false&sprop=&sprop=name:"
+  return result;
 }
 
 var app = new Vue({
