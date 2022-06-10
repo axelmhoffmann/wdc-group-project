@@ -397,8 +397,15 @@ router.post('/invite', function(req, res)
         }
 
         var query = "SELECT email FROM user WHERE user_id = ?";
+        console.log(req.body.user_id + " " + req.session.user.user_id);
         connection.query(query, [req.body.user_id], function(err, rows, fields) {
             if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
+            if(!rows[0])
+            {
                 console.log(err);
                 res.sendStatus(500);
                 return;
