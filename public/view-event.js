@@ -14,7 +14,9 @@ function share()
 
     try
     {
-        document.execCommand('copy');
+        var success = document.execCommand('copy');
+        if(success)
+          alert("Copied event link!");
     } catch (err)
     {
         console.error('Fallback: Oops, unable to copy', err);
